@@ -155,20 +155,19 @@ footer.note{text-align:center;font-size:.68rem;color:var(--ink-soft);margin-top:
     <div class="quiz-field">
       <label for="quizBlockSize">Block size</label>
       <select id="quizBlockSize">
-        <option value="5">5 questions</option>
-        <option value="10" selected>10 questions</option>
-        <option value="15">15 questions</option>
-        <option value="20">20 questions</option>
+        <option value="40" selected>40 questions</option>
+        <option value="60">60 questions</option>
+        <option value="80">80 questions</option>
+        <option value="100">100 questions</option>
       </select>
     </div>
     <div class="quiz-field">
       <label for="quizTimeLimit">Timer</label>
       <select id="quizTimeLimit">
-        <option value="300">5 min</option>
-        <option value="600">10 min</option>
-        <option value="900" selected>15 min</option>
-        <option value="1200">20 min</option>
-        <option value="1800">30 min</option>
+        <option value="2700">45 min</option>
+        <option value="3600">60 min</option>
+        <option value="5400" selected>90 min</option>
+        <option value="7200">120 min</option>
       </select>
     </div>
     <div class="quiz-field">
@@ -183,6 +182,7 @@ footer.note{text-align:center;font-size:.68rem;color:var(--ink-soft);margin-top:
     <button class="tbtn" id="startQuizBtn">Start timed block</button>
     <button class="tbtn" id="resetQuizBtn">Reset</button>
   </div>
+  <div style="margin-top:10px;font-size:.72rem;color:var(--ink-soft);font-weight:700;letter-spacing:.04em;">Full exam blocks: 40–100 questions · Time: 45–120 minutes</div>
 
   <div id="quizCard" class="quiz-card">
     <div class="quiz-head">
@@ -635,8 +635,80 @@ const NUTR = [
 ["Which statement best reflects safe, respectful practice when assisting a patient with feeding?",
 ["Rush through the meal to allow time for other tasks","Encourage as much independence as possible while following prescribed aspiration precautions","Scrape food off the patient's face with a spoon without asking","Skip oral hygiene before and after the meal to save time"],1,
 "Safe feeding assistance means allowing the patient as much independence as possible, giving small bites with time to swallow, following any prescribed aspiration precautions, and maintaining the patient's dignity throughout.",
-"Document the percentage of food eaten and fluids consumed in milliliters — precise documentation supports ongoing nutritional assessment."]
-];
+"Document the percentage of food eaten and fluids consumed in milliliters — precise documentation supports ongoing nutritional assessment."],
+["Which vitamin is essential for normal calcium absorption and bone mineralization?",
+["Vitamin C","Vitamin D","Vitamin K","Folate"],1,
+"Vitamin D is needed for calcium and phosphorus absorption, supporting bone health and mineralization.",
+"Low vitamin D is associated with rickets in children and osteomalacia in adults."],
+["A patient with elevated LDL cholesterol should be encouraged to consume more:",
+["Saturated fats","Trans fats","Unsaturated fats","Refined grains"],2,
+"Unsaturated fats can help lower LDL and improve heart health when substituted for saturated or trans fats.",
+"Monounsaturated and polyunsaturated fats are healthier choices for cardiovascular risk reduction."],
+["The most important function of folate during pregnancy is to help prevent:",
+["Preeclampsia","Neural tube defects","Gestational diabetes","Anemia only"],1,
+"Folate is critical for proper neural tube development and reduces the risk of neural tube defects in pregnancy.",
+"Folate intake is most important before conception and early in pregnancy."],
+["Which food is the best source of complete protein?",
+["Apple","Eggs","Orange juice","Butter"],1,
+"Eggs, dairy, meat, and soy provide complete proteins containing all essential amino acids.",
+"Complementary proteins are used when plant proteins are combined, but complete proteins are the most efficient source."],
+["The recommended daily fluid intake for most healthy adults is approximately:",
+["1–2 cups","3–4 cups","6–8 cups","12–16 cups"],2,
+"Most adults need about 6 to 8 cups of fluid daily, but needs vary with age, climate, and activity.",
+"Increased fluid needs occur with fever, diarrhea, exercise, and pregnancy or lactation."],
+["Which condition is most closely associated with vitamin A deficiency?",
+["Night blindness","Bleeding gums","Tetany","Pellagra"],0,
+"Vitamin A deficiency can cause night blindness and poor vision in low-light conditions.",
+"Remember: vitamin A supports vision, immunity, and epithelial tissue health."],
+["A patient with poor intake and dark, dry skin may be at risk for which deficiency?",
+["Vitamin C deficiency","Niacin deficiency","Iron deficiency","Calcium deficiency"],1,
+"Niacin deficiency can lead to pellagra, which is associated with dermatitis, diarrhea, and dementia.",
+"Pellagra is notable because three classic domains are involved: skin, GI, and neurologic symptoms."],
+["Which nutritional assessment finding is the best objective indicator of dehydration?",
+["Favorite food preference","Dry mucous membranes and poor skin turgor","A verbal complaint of hunger","An apple pie recipe"],1,
+"Dry mucous membranes and poor skin turgor are objective signs of dehydration.",
+"Objective findings are measurable and observable, unlike patient reports alone."],
+["The best snack choice for a patient with diabetes who needs a quick but balanced option is:",
+["A candy bar","Plain yogurt with berries","A soda","A bag of chips"],1,
+"Yogurt with berries provides protein, some carbohydrate, and fiber while minimizing a rapid blood sugar spike.",
+"Balanced meals and snacks reduce sudden glucose swings."],
+["Which statement about zinc is most accurate?",
+["It is primarily a fat-soluble vitamin","It supports immune function and wound healing","It is only needed during infancy","It reduces the need for protein"],1,
+"Zinc supports immunity, wound healing, and enzyme activity.",
+"Low zinc can be associated with delayed wound healing and impaired immunity."],
+["The nurse teaches a patient to increase fiber gradually to avoid:",
+["Excessive weight loss","Gas, bloating, and cramping","Excess vitamin absorption","Kidney dysfunction"],1,
+"Increasing fiber too quickly can cause gas, bloating, and cramping, so it should be increased gradually with adequate fluids.",
+"Fiber works best when hydration is adequate and intake is increased slowly."],
+["Which statement is true regarding lactose intolerance?",
+["It is caused by an overabundance of lactose in the body","It is due to insufficient lactase enzyme and can cause GI upset after dairy intake","It is a form of celiac disease","It affects only infants"],1,
+"Lactose intolerance results from inadequate lactase, causing bloating, gas, and diarrhea with lactose-containing foods.",
+"Patients often tolerate lactose-free dairy or lactase enzyme supplements well."],
+["Which of the following is typically used to assess long-term blood glucose control?",
+["Fasting blood sugar","Hemoglobin A1C","Cholesterol panel","Urine protein"],1,
+"HbA1c reflects average blood sugar control over the previous 2 to 3 months.",
+"A1C is one of the key long-term monitoring tools for diabetes management."],
+["The best nutrition teaching for a patient on a sodium-restricted diet is to limit:",
+["Fresh fruit","Processed foods and canned soups","Whole grains","Leafy greens"],1,
+"Processed foods and canned soups often contain high sodium and can undermine a sodium-restricted plan.",
+"Reading labels and choosing fresh or minimally processed foods helps reduce sodium intake."],
+["A patient with dysphagia should avoid which food texture unless specifically ordered?",
+["Pureed foods","Thin liquids when prescribed unsafe","Soft foods","Minced foods"],1,
+"Thin liquids may be unsafe for some dysphagia patients; the prescribing provider may order a specific consistency.",
+"Swallowing evaluations determine the safest diet textures and liquid consistencies."],
+["Which food is a good source of magnesium?",
+["Spinach","Cranberries","Butter","White bread"],0,
+"Leafy green vegetables like spinach are good magnesium sources.",
+"Magnesium important for muscle and nerve function, as well as enzyme activity."],
+["Which condition is most associated with vitamin K deficiency?",
+["Bleeding tendency","Night blindness","Rickets","Anemia only"],0,
+"Vitamin K is needed for normal clotting, so deficiency can increase bleeding risk.",
+"Vitamin K also has a role in bone metabolism and clotting factor synthesis."],
+["An older adult who has poor appetite and weight loss needs assessment for:",
+["Only a vitamin supplement","Malnutrition or underlying illness","Excessive exercise","Increased calorie needs only"],1,
+"Unintentional weight loss in an older adult is not a normal expectation and should be assessed for malnutrition and underlying disease.",
+"Aging changes, medication effects, social factors, and depression can all reduce intake."],
+"#ENDNUTR" ];
 
 const IMMUNE = [
 ["Which best describes a pathogen's “reservoir”?",
@@ -962,8 +1034,185 @@ const IMMUNE = [
 ["Which statement correctly distinguishes medical from surgical asepsis?",
 ["Medical asepsis eliminates all microorganisms; surgical asepsis only reduces their number","Medical (clean) technique reduces the number of microorganisms; surgical (sterile) technique eliminates all microorganisms from a specific area","There is no meaningful difference between the two","Surgical asepsis is only used outside the operating room"],1,
 "Medical asepsis, or clean technique, reduces the number and spread of microorganisms, while surgical asepsis, or sterile technique, aims to eliminate all microorganisms, including spores, from a specific field or area.",
-"Use surgical asepsis for procedures like inserting a urinary catheter or accessing a central line, where introducing any organism could cause a serious infection."]
-];
+"Use surgical asepsis for procedures like inserting a urinary catheter or accessing a central line, where introducing any organism could cause a serious infection."],
+["Which immune response develops when the body is exposed to an antigen and then produces memory cells?",
+["Passive immunity","Active immunity","Innate immunity","Nonspecific immunity"],1,
+"Active immunity results from the body creating its own immune response after exposure to an antigen, often providing long-lasting protection.",
+"Vaccination and natural infection are classic examples of active immunity."],
+["The primary function of lymph nodes is to:",
+["Produce red blood cells","Filter lymph and trap pathogens","Digest food","Store platelets"],1,
+"Lymph nodes filter lymph and help identify and trap microorganisms, making them important components of immune defense.",
+"Swollen lymph nodes are a common sign of infection or inflammation nearby."],
+["Which type of white blood cell is the first responder during acute bacterial infection?",
+["Neutrophil","Eosinophil","Basophil","Monocyte"],0,
+"Neutrophils are the earliest and most active phagocytes during acute bacterial infection.",
+"Neutrophils are like rapid responders in the inflammatory response."],
+["Which of the following is a sign of local inflammation?",
+["Redness, warmth, swelling, and pain","Low blood pressure only","Dry cough only","Low urine output only"],0,
+"Local inflammation classically includes redness, warmth, swelling, and pain due to vasodilation and increased vascular permeability.",
+"Inflammation is a protective response that can occur with infection or tissue injury."],
+["Which immunoglobulin is found in body secretions such as tears, saliva, and breast milk?",
+["IgA","IgG","IgM","IgE"],0,
+"IgA is found in mucosal secretions and provides important protection at mucosal surfaces.",
+"Breast milk contains secretory IgA that helps protect the infant's GI and respiratory tracts."],
+["A patient with HIV is most vulnerable to opportunistic infections because:",
+["The immune system is suppressed","The patient has no blood pressure issues","The respiratory system is never affected","Antibiotics are always contraindicated"],0,
+"HIV weakens the immune response, especially T-cell function, increasing the risk of opportunistic infection.",
+"Think immune suppression when evaluating vulnerability to unusual or severe infections."],
+["Which blood culture result would most strongly suggest bacteremia?",
+["Bacteria detected in the bloodstream","Low RBC count alone","High eosinophils","Normal WBC count"],0,
+"Bacteremia means bacteria are present in the blood, which may or may not progress to sepsis.",
+"Bacteremia is not the same as sepsis, but it is an important indicator of bloodstream infection."],
+["The purpose of contact precautions is to prevent transmission through:",
+["Airborne particles","Direct or indirect contact","Large droplets only","Foodborne pathogens only"],1,
+"Contact precautions reduce the risk of transmission through direct touch or contaminated surfaces.",
+"C. difficile, MRSA, and VRE are classic contact-transmission organisms."],
+["Which of the following infections is spread primarily by the airborne route?",
+["Influenza","Tuberculosis","Strep throat","C. difficile"],1,
+"Tuberculosis is spread by airborne particles that can remain suspended in the air.",
+"Airborne infections require N95 or higher respiratory protection and negative-pressure rooms."],
+["A patient with a febrile UTI and confusion is most concerning for:",
+["Simple cystitis","Sepsis","Mild dehydration","Allergic reaction"],1,
+"A UTI with altered mental status and fever should prompt evaluation for sepsis, which can be life-threatening.",
+"Mental status change plus infection is a red flag for systemic deterioration."],
+["Which organism is most associated with food poisoning after undercooked poultry or eggs?",
+["Salmonella","Clostridium tetani","Hepatitis A","Mycobacterium tuberculosis"],0,
+"Salmonella commonly causes food poisoning associated with contaminated poultry, eggs, and produce.",
+"Food safety and proper cooking temperatures are important infection-prevention strategies."],
+["Which measurement is the best early indicator of wound infection?",
+["Fever and increasing redness, warmth, or drainage","Pulse rate only","Patient preference","Normal appetite"],0,
+"Wound infection often presents with redness, warmth, swelling, increasing pain, and purulent drainage.",
+"Early recognition of wound infection can prevent progression to sepsis."],
+["What is the key difference between colonization and infection?",
+["Colonization means microorganisms are present without causing tissue invasion or symptoms; infection means disease is occurring","Colonization is always treated with antibiotics","Infection is only viral","They are identical terms"],0,
+"Colonization is the presence of microorganisms without active disease, whereas infection involves tissue invasion and clinical illness.",
+"MRSA in the nose may be colonization rather than active infection."],
+["The vaccine that is especially important during every pregnancy is:",
+["MMR","Tdap","Varicella","Hepatitis A"],1,
+"Tdap is recommended during each pregnancy to protect the newborn from pertussis.",
+"Pregnancy immunizations are a key part of prenatal patient education."],
+["Which body fluid is considered a common source of infection transmission in healthcare settings?",
+["Blood","Urine only","Hair","Nail polish"],0,
+"Blood and other potentially infectious body fluids can transmit pathogens if exposure occurs without proper precautions.",
+"Standard precautions protect against contact with blood and body fluids."],
+["The phrase “common vehicle transmission” refers to spread via:",
+["A contaminated food or water source","A tick bite","Airborne droplets from a cough","Direct skin contact"],0,
+"Common vehicle transmission occurs when many people are exposed to the same contaminated source, such as food or water.",
+"Foodborne outbreaks are classic examples of common vehicle transmission."],
+["Which precaution is required for a patient with measles?",
+["Contact precautions","Droplet precautions","Airborne precautions","Standard precautions only"],2,
+"Measles is spread through the airborne route and requires airborne precautions with an N95 respirator.",
+"Measles, TB, and varicella all require airborne protective measures."],
+["A patient with a positive PPD but no symptoms needs further evaluation to rule out:",
+["Active tuberculosis infection","Diabetes","Anemia","Asthma"],0,
+"A positive PPD indicates exposure or latent infection and requires further assessment to determine whether tuberculosis is active.",
+"A positive screening test is not the diagnosis; it requires additional evaluation."],
+["Which finding is most concerning in a patient with suspected COVID-19 or influenza?",
+["Mild sore throat","Shortness of breath and cyanosis","Mild fatigue","Low-grade fever"],1,
+"Shortness of breath and cyanosis are more concerning and may indicate respiratory compromise requiring urgent care.",
+"Respiratory distress is a key clinical warning sign for severe viral infection."],
+"#ENDIMMUNE" ,
+["A medication that is bound to plasma proteins is more likely to be affected by which physiologic change?",
+["Low albumin levels","High hemoglobin levels","High urine output","Low blood pressure alone"],0,
+"Low albumin reduces the amount of protein available to bind drug, potentially increasing the amount of free drug and its effect or toxicity.",
+"When albumin is low, think about more free drug available in the bloodstream and increased medication effect."],
+["Which medication route has the fastest onset of action?",
+["Oral","Intramuscular","Intravenous","Subcutaneous"],2,
+"IV medications enter the bloodstream immediately, producing the fastest therapeutic effect.",
+"When a question asks for the fastest route, the answer is usually IV unless otherwise specified."],
+["A drug with a narrow therapeutic index requires which nursing action most closely?",
+["No monitoring is needed","Close monitoring of serum levels and adverse effects","Giving the medication only once per week","Using a larger dose to ensure effectiveness"],1,
+"Narrow therapeutic index drugs have a small margin between effective and toxic concentrations, so monitoring is essential.",
+"A narrow index is a red flag for toxicity risk; monitor labs and side effects closely."],
+["Which medication administration error is most likely to cause a medication toxicity issue?",
+["Giving the medication at the correct time","Giving a higher dose than prescribed or not adjusting for renal impairment","Using the correct route","Documenting after the fact"],1,
+"Medication toxicity often results from excess dose, accumulation, or impaired clearance, especially in kidney or liver dysfunction.",
+"Always assess dose, route, organ function, and timing before administration."],
+["A medication that activates a receptor and produces the same response as the body’s natural chemical is called a:",
+["Competitive antagonist","Agonist","Inverse agonist","Partial antagonist"],1,
+"An agonist binds to a receptor and triggers a response similar to the endogenous chemical.",
+"Agonist = turns on. Antagonist = blocks or prevents."],
+["Which lab value should be monitored most closely for a patient receiving gentamicin?",
+["Serum creatinine and drug levels","Platelet count only","Hemoglobin A1C","Calcium"],0,
+"Aminoglycosides like gentamicin are nephrotoxic and ototoxic, so serum levels and renal function should be watched closely.",
+"Think aminoglycosides = kidney and hearing risk."],
+["The term onset of action refers to:",
+["Time until the drug reaches its highest concentration","Time until the drug produces its first therapeutic effect","The drug’s elimination half-life","The amount of drug absorbed by the GI tract"],1,
+"Onset is the first time a drug begins to produce a pharmacologic effect.",
+"Peak is highest concentration; onset is when benefit starts."],
+["Which statement about the antidote for acetaminophen overdose is true?",
+["Activated charcoal is the only treatment","N-acetylcysteine is the antidote","Vitamin K reverses the overdose","Naloxone is the antidote"],1,
+"N-acetylcysteine is the antidote for acetaminophen overdose and is most effective when given early.",
+"Acetaminophen overdose is a common NCLEX topic because toxicity can be severe and time-sensitive."],
+["A patient receiving warfarin should be taught to monitor which daily safety issue?",
+["Falls and bleeding signs","Protein intake only","Blood glucose","Urine color"],0,
+"Warfarin increases bleeding risk, so patients need education about bruising, bleeding gums, black stools, and falls.",
+"For anticoagulants, think bleeding precautions and consistent vitamin K intake."],
+["Which statement best describes a side effect?",
+["An expected, often predictable effect of a medication","A life-threatening allergic reaction","A reason to stop all medications immediately","An infection caused by the drug"],0,
+"Side effects are often expected and may be mild or moderate; they differ from allergic reaction or toxicity.",
+"Expected effects are not the same as anaphylaxis; one is common and predictable, the other is severe."],
+["A medication that causes birth defects is described as:",
+["Teratogenic","Antagonistic","Synergistic","Narcotic"],0,
+"A teratogenic medication can cause fetal abnormalities during pregnancy.",
+"Pregnancy safety categories and teratogenic risk are common high-yield content."],
+["Which statement about medication reconciliation is correct?",
+["It is done only on discharge","It compares home and current medications to prevent omissions and interactions","It replaces the medication order","It is optional for outpatients"],1,
+"Medication reconciliation ensures the patient’s active medication list is accurate and safe across transitions of care.",
+"Transitions of care are a classic medication safety hotspot."],
+["The liver’s role in drug metabolism is most directly associated with which process?",
+["Excretion","Biotransformation","Absorption","Distribution"],1,
+"The liver metabolizes drugs through biotransformation, often making them easier to excrete.",
+"Think bioavailability and first-pass effect when asking about oral medications."],
+["A patient with chronic kidney disease usually needs which adjustment for many medications?",
+["Higher doses","Lower doses or slower dosing intervals","No change in dose","More frequent dosing at the same strength"],1,
+"Renal impairment can decrease drug clearance and increase toxicity risk, so dose adjustments are often needed.",
+"Always check kidney function before giving many medications, especially renally cleared drugs."],
+["What is the primary purpose of a loading dose?",
+["To prevent drug absorption","To quickly reach a therapeutic level","To decrease protein binding","To reduce toxicity"],1,
+"A loading dose helps achieve therapeutic drug levels rapidly, often before maintenance dosing begins.",
+"Loading doses are common in acute illness when the target drug level must be reached quickly."],
+["Which is a classic symptom of hypokalemia?",
+["Constipation and weakness","Hypertension and edema","Warm flushed skin","Excessive thirst only"],0,
+"Hypokalemia often causes weakness, muscle cramps, arrhythmias, and constipation.",
+"Potassium issues are a frequent exam focus because they affect the heart."],
+["A medication that competes with an agonist at a receptor and prevents the response is called a:",
+["Antagonist","Potentiator","Agonist","Bioequivalent"],0,
+"An antagonist blocks the receptor and prevents the body’s natural chemical or another drug from producing the effect.",
+"Antagonist means block; agonist means stimulate."],
+["The antidote for heparin is:",
+["Vitamin K","Protamine sulfate","Flumazenil","Atropine"],1,
+"Protamine sulfate reverses the anticoagulant effect of heparin.",
+"Heparin antidote questions are common because they connect to bleeding precautions."],
+["The antidote for warfarin is:",
+["Protamine sulfate","Vitamin K","Naloxone","Digoxin immune FAB"],1,
+"Vitamin K is the antidote for warfarin, especially in cases of excessive anticoagulation or bleeding.",
+"Warfarin reversal is a classic safety concept in medication administration."],
+["The correct term for the time it takes for half of a drug to be eliminated from the body is:",
+["Half-life","Onset","Peak","Distribution"],0,
+"Half-life is the time required for half the drug concentration to be eliminated.",
+"Half-life is essential when calculating dosing intervals and understanding drug accumulation."],
+["A patient who reports ringing in the ears after receiving an aminoglycoside should be assessed for which complication?",
+["Ototoxicity","Hepatotoxicity","Myelosuppression","Constipation"],0,
+"Aminoglycosides can damage the auditory nerve and cause ototoxicity, which may present as tinnitus or hearing changes.",
+"Aminoglycosides are high-risk for both kidney and hearing damage."],
+["Which finding is most consistent with digoxin toxicity?",
+["Yellow-green visual halos and bradycardia","Hypertension and flushing","High blood glucose","Excessive urination without dehydration"],0,
+"Digoxin toxicity can cause nausea, visual disturbances such as yellow-green halos, confusion, and bradycardia.",
+"Always check apical pulse before digoxin and recognize toxicity symptoms early."],
+["Which medication should be held if the patient’s apical pulse is below 60 bpm?",
+["Aspirin","Digoxin","Ibuprofen","Acetaminophen"],1,
+"Digoxin commonly requires checking the apical pulse before administration, and the dose is often held when the pulse is too slow.",
+"Hold or question the dose if apical pulse is low before giving digoxin."],
+["Which lab test is most closely monitored for heparin therapy?",
+["PT/INR","aPTT","CBC only","Liver enzymes"],1,
+"aPTT is commonly monitored for heparin, and dose adjustments are often based on therapeutic range.",
+"Heparin and warfarin have different monitoring labs: heparin = aPTT, warfarin = PT/INR."],
+["The medication order should be questioned if which route is ordered for a patient with severe nausea and vomiting?",
+["Oral medication for a patient who cannot swallow","IV medication in a stable patient","Subcutaneous medication","Topical cream"],0,
+"If a patient is nauseated and vomiting, an oral medication may not be absorbed adequately and may need a different route.",
+"Route must match the patient’s condition and ability to absorb the medication."],
+"#ENDPHARM" ];
 
 const DEV = [
 ["According to Erikson's stages, an infant (birth to 1 year) is working through which psychosocial task?",
@@ -1311,12 +1560,21 @@ function getQuizCategoryValue(){
 function startQuiz(){
   var categoryList = getQuizCategoryValue();
   var pool = ALL.filter(function(item){ return categoryList.indexOf(item.cat) !== -1; });
+
+  if (categoryList.length === 1 && pool.length < 40) {
+    categoryList = ['PHARM','NUTR','IMMUNE','DEV'];
+    pool = ALL.filter(function(item){ return categoryList.indexOf(item.cat) !== -1; });
+  }
+
   if (!pool.length){
     alert('No questions available for the selected category.');
     return;
   }
 
   var size = parseInt(document.getElementById('quizBlockSize').value, 10);
+  size = Math.max(40, Math.min(100, size));
+  if (pool.length < size) size = pool.length;
+
   var randomized = document.getElementById('quizRandom').value === 'true';
   var block = randomized ? shuffleArray(pool) : pool.slice();
   quizState.questions = block.slice(0, Math.min(size, block.length));
