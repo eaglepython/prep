@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>200-Question Exam Prep — Nutrition, Pharmacology, Immunity/Infection & Life Span</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F2EA; --paper:#FFFFFF; --ink:#1E2A28; --ink-soft:#5B6864; --line:#DDD5C2;
+  --pharm:#6B4E9C; --pharm-tint:#EFE9F7;
+  --nutr:#3F8B62; --nutr-tint:#E4F2E8;
+  --immune:#C1502E; --immune-tint:#FBE7DE;
+  --dev:#2F6FA3; --dev-tint:#E4EEF6;
+  --gold:#DFA23A; --gold-tint:#FBF0DA;
+  --shadow:0 10px 30px rgba(20,30,28,.10); --radius:16px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#12181A; --paper:#1B2325; --ink:#EDEAE2; --ink-soft:#A9B2AD; --line:#2E3A3A;
+    --pharm:#B79FE0; --pharm-tint:#2A2338;
+    --nutr:#7FCC9E; --nutr-tint:#17301F;
+    --immune:#E88A66; --immune-tint:#3A2018;
+    --dev:#8DBEE6; --dev-tint:#182635;
+    --gold:#E8B85C; --gold-tint:#3A2F17;
+    --shadow:0 10px 30px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12181A; --paper:#1B2325; --ink:#EDEAE2; --ink-soft:#A9B2AD; --line:#2E3A3A;
+  --pharm:#B79FE0; --pharm-tint:#2A2338; --nutr:#7FCC9E; --nutr-tint:#17301F;
+  --immune:#E88A66; --immune-tint:#3A2018; --dev:#8DBEE6; --dev-tint:#182635;
+  --gold:#E8B85C; --gold-tint:#3A2F17; --shadow:0 10px 30px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:'Inter',-apple-system,sans-serif;-webkit-tap-highlight-color:transparent;}
+h1,h2,.serif{font-family:'Lora',Georgia,serif;}
+.wrap{max-width:880px;margin:0 auto;padding:16px 14px 70px;}
+header.top{position:sticky;top:0;z-index:30;background:linear-gradient(180deg,var(--bg) 85%,transparent);padding:14px 14px 8px;}
+.title-row{display:flex;align-items:center;justify-content:space-between;gap:10px;max-width:880px;margin:0 auto;}
+.brand{display:flex;align-items:center;gap:10px;}
+.brand-badge{width:38px;height:38px;border-radius:11px;background:var(--dev);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex:none;}
+.title-row h1{font-size:1.12rem;margin:0;font-weight:700;color:var(--ink);line-height:1.2;}
+.title-row p{margin:2px 0 0;font-size:.75rem;color:var(--ink-soft);}
+.theme-btn{border:1px solid var(--line);background:var(--paper);color:var(--ink-soft);border-radius:10px;width:34px;height:34px;cursor:pointer;font-size:1rem;flex:none;}
+.stat-strip{display:flex;gap:8px;max-width:880px;margin:12px auto 0;overflow-x:auto;padding-bottom:2px;}
+.stat-chip{flex:none;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:.72rem;color:var(--ink-soft);font-weight:700;}
+.stat-chip b{color:var(--ink);font-size:.95rem;font-family:'Lora';display:block;}
+.controls{position:sticky;top:74px;z-index:25;background:var(--bg);padding:10px 14px 8px;}
+.search-row{max-width:880px;margin:0 auto;display:flex;gap:8px;}
+#search{flex:1;padding:10px 14px;border-radius:12px;border:1.5px solid var(--line);font-family:'Inter';font-size:.86rem;background:var(--paper);color:var(--ink);}
+.filters{display:flex;gap:7px;overflow-x:auto;max-width:880px;margin:8px auto 0;padding-bottom:2px;scrollbar-width:none;}
+.filters::-webkit-scrollbar{display:none;}
+.filt{flex:none;padding:7px 13px;border-radius:999px;border:1.5px solid var(--line);background:var(--paper);font-size:.75rem;font-weight:700;cursor:pointer;color:var(--ink-soft);white-space:nowrap;}
+.filt.on[data-c="ALL"]{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+.filt.on[data-c="PHARM"]{background:var(--pharm);color:#fff;border-color:var(--pharm);}
+.filt.on[data-c="NUTR"]{background:var(--nutr);color:#fff;border-color:var(--nutr);}
+.filt.on[data-c="IMMUNE"]{background:var(--immune);color:#fff;border-color:var(--immune);}
+.filt.on[data-c="DEV"]{background:var(--dev);color:#fff;border-color:var(--dev);}
+.toolbar{display:flex;gap:8px;max-width:880px;margin:8px auto 0;}
+.tbtn{flex:1;padding:9px;border-radius:11px;border:1px solid var(--line);background:var(--paper);font-size:.76rem;font-weight:700;color:var(--ink-soft);cursor:pointer;}
+
+.quiz-panel{max-width:880px;margin:14px auto 0;background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:16px;}
+.quiz-panel h2{margin:0 0 12px;font-size:1rem;letter-spacing:.02em;}
+.quiz-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;}
+.quiz-field{display:flex;flex-direction:column;gap:6px;}
+.quiz-field label{font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
+.quiz-field select,.quiz-field input{width:100%;padding:9px 10px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;}
+.quiz-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+.quiz-actions .tbtn{flex:1 1 140px;}
+.quiz-card{margin-top:12px;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:16px;display:none;}
+.quiz-card.active{display:block;}
+.quiz-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px;flex-wrap:wrap;}
+.quiz-status{font-size:.76rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
+.quiz-timer{padding:6px 10px;border-radius:999px;background:var(--gold-tint);color:#7b5613;font-weight:800;font-size:.72rem;border:1px solid rgba(223,162,58,.4);}
+.quiz-question{font-size:1rem;line-height:1.5;font-weight:700;margin:10px 0 16px;}
+.quiz-options{display:flex;flex-direction:column;gap:8px;}
+.quiz-option{display:flex;align-items:flex-start;gap:10px;padding:11px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);text-align:left;font:inherit;cursor:pointer;transition:.2s ease;}
+.quiz-option:hover{border-color:var(--dev);}
+.quiz-option.selected{border-color:var(--dev);background:var(--dev-tint);}
+.quiz-option.correct{border-color:var(--nutr);background:var(--nutr-tint);}
+.quiz-option.wrong{border-color:var(--immune);background:var(--immune-tint);}
+.quiz-choice{font-weight:800;color:var(--ink-soft);width:20px;flex:none;}
+.quiz-feedback{margin-top:14px;padding:12px;border-radius:12px;background:var(--paper);border:1px solid var(--line);color:var(--ink);font-size:.85rem;line-height:1.55;display:none;}
+.quiz-feedback.show{display:block;}
+.quiz-nav{display:flex;justify-content:space-between;gap:8px;margin-top:16px;flex-wrap:wrap;}
+.quiz-nav button:disabled{opacity:.45;cursor:not-allowed;}
+.qcard{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);margin:12px 0;box-shadow:var(--shadow);overflow:hidden;}
+.qhead{padding:14px 16px 10px;display:flex;gap:10px;align-items:flex-start;cursor:pointer;}
+.qnum{flex:none;width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'Lora';font-weight:700;font-size:.82rem;color:#fff;}
+.qnum.PHARM{background:var(--pharm);} .qnum.NUTR{background:var(--nutr);} .qnum.IMMUNE{background:var(--immune);} .qnum.DEV{background:var(--dev);}
+.qmeta{flex:1;min-width:0;}
+.qtag{display:inline-block;font-size:.62rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:6px;margin-bottom:5px;}
+.qtag.PHARM{background:var(--pharm-tint);color:var(--pharm);} .qtag.NUTR{background:var(--nutr-tint);color:var(--nutr);}
+.qtag.IMMUNE{background:var(--immune-tint);color:var(--immune);} .qtag.DEV{background:var(--dev-tint);color:var(--dev);}
+.qtext{font-size:.94rem;line-height:1.45;font-weight:600;color:var(--ink);}
+.chev{flex:none;color:var(--ink-soft);font-size:1rem;transition:transform .2s;margin-top:3px;}
+.qcard.open .chev{transform:rotate(180deg);}
+
+.qbody{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+.qcard.open .qbody{max-height:2000px;}
+.opts{padding:0 16px 4px;display:flex;flex-direction:column;gap:7px;}
+.opt{padding:9px 12px;border-radius:10px;border:1.5px solid var(--line);font-size:.85rem;display:flex;gap:8px;}
+.opt .let{font-weight:800;flex:none;color:var(--ink-soft);}
+.opt.correct{border-color:var(--nutr);background:var(--nutr-tint);}
+.opt.correct .let{color:var(--nutr);}
+.answer-block{padding:10px 16px 16px;}
+.rationale{font-size:.86rem;line-height:1.55;color:var(--ink);background:var(--bg);border-radius:12px;padding:12px 14px;margin-top:10px;}
+.rationale b{color:var(--ink);}
+.tipbox{margin-top:10px;background:var(--gold-tint);border-left:4px solid var(--gold);border-radius:10px;padding:10px 13px;font-size:.82rem;line-height:1.5;display:flex;gap:8px;}
+.tipbox .ic{flex:none;}
+
+footer.note{text-align:center;font-size:.68rem;color:var(--ink-soft);margin-top:26px;line-height:1.6;}
+.empty{text-align:center;padding:40px 20px;color:var(--ink-soft);font-size:.85rem;}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="title-row">
+    <div class="brand">
+      <div class="brand-badge">📚</div>
+      <div>
+        <h1>200-Question Exam Prep</h1>
+        <p>Nutrition · Pharmacology · Immunity &amp; Infection · Life Span Development</p>
+      </div>
+    </div>
+    <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode">◐</button>
+  </div>
+  <div class="stat-strip" id="statStrip"></div>
+</header>
+
+<div class="controls">
+  <div class="search-row"><input id="search" type="text" placeholder="Search questions or keywords…"></div>
+  <div class="filters" id="filterRow"></div>
+  <div class="toolbar">
+    <button class="tbtn" id="expandAll">Reveal all answers</button>
+    <button class="tbtn" id="collapseAll">Hide all answers</button>
+  </div>
+</div>
+
+<div class="quiz-panel">
+  <h2>Timed NCLEX Block Practice</h2>
+  <div class="quiz-grid">
+    <div class="quiz-field">
+      <label for="quizCategory">Category</label>
+      <select id="quizCategory">
+        <option value="ALL">All categories</option>
+        <option value="PHARM">Pharmacology</option>
+        <option value="NUTR">Nutrition</option>
+        <option value="IMMUNE">Immunity & Infection</option>
+        <option value="DEV">Life Span Development</option>
+      </select>
+    </div>
+    <div class="quiz-field">
+      <label for="quizBlockSize">Block size</label>
+      <select id="quizBlockSize">
+        <option value="5">5 questions</option>
+        <option value="10" selected>10 questions</option>
+        <option value="15">15 questions</option>
+        <option value="20">20 questions</option>
+      </select>
+    </div>
+    <div class="quiz-field">
+      <label for="quizTimeLimit">Timer</label>
+      <select id="quizTimeLimit">
+        <option value="300">5 min</option>
+        <option value="600">10 min</option>
+        <option value="900" selected>15 min</option>
+        <option value="1200">20 min</option>
+        <option value="1800">30 min</option>
+      </select>
+    </div>
+    <div class="quiz-field">
+      <label for="quizRandom">Order</label>
+      <select id="quizRandom">
+        <option value="true">Randomized</option>
+        <option value="false">Sequential</option>
+      </select>
+    </div>
+  </div>
+  <div class="quiz-actions">
+    <button class="tbtn" id="startQuizBtn">Start timed block</button>
+    <button class="tbtn" id="resetQuizBtn">Reset</button>
+  </div>
+
+  <div id="quizCard" class="quiz-card">
+    <div class="quiz-head">
+      <div class="quiz-status" id="quizStatus">Question 0 of 0</div>
+      <div class="quiz-timer" id="quizTimer">15:00</div>
+    </div>
+    <div class="quiz-question" id="quizQuestion"></div>
+    <div class="quiz-options" id="quizOptions"></div>
+    <div class="quiz-feedback" id="quizFeedback"></div>
+    <div class="quiz-nav">
+      <button class="tbtn" id="prevQuizBtn">Previous</button>
+      <button class="tbtn" id="nextQuizBtn">Next</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div id="list"></div>
+  <div class="empty" id="emptyMsg" style="display:none;">No questions match your search/filter.</div>
+  <footer class="note">Study aid built from your uploaded course materials (pharmacology, nutrition, immunity/infection, and life-span development lectures and worksheets). Always verify current clinical guidelines and your own course content before your exam.</footer>
+</div>
+
+<script>
+/* ============ QUESTION DATA ============
+   Each entry: [category, question, [4 options], correctIndex, rationale, nclexTip] */
+
+const PHARM = [
+["The term “pharmacology” comes from the Greek word pharmakon combined with the suffix -ology. What did pharmakon originally mean?",
+["“Medicine” only","“Poison” only","Both “poison” and “remedy”","“Plant” only"],2,
+"Pharmakon carried a double meaning in ancient Greek: it could mean a poison, since many early medicines were toxic enough to kill, or a remedy, since the same substances could cure illness depending on how they were used.",
+"Remember that dose and preparation, not the substance alone, often determine whether an agent heals or harms."],
+
+["The English word “drug” comes from the Dutch word droog. What does droog mean?",
+["Bitter","Dry","Strong","Sacred"],1,
+"Droog means \"dry,\" reflecting the early practice of using dried herbs to prepare medicines.",
+"Word-origin questions like this are quick, low-stress points — learn the handful of key terms your instructor emphasizes."],
+
+["Which ancient Egyptian document, written around 1550 BC, lists roughly 700 remedies for conditions ranging from crocodile bites to psychiatric illness?",
+["The Al-Hawi","The Yellow Emperor's Inner Classic","The Ebers Papyrus","The Hippocratic Corpus"],2,
+"The Ebers Papyrus is one of the oldest preserved medical documents and reflects the breadth of ancient Egyptian pharmacologic knowledge.",
+"Associate each historical text with its culture: Ebers Papyrus (Egypt), Yellow Emperor's Inner Classic (China), Al-Hawi (Persia)."],
+
+["The Al-Hawi, a 20-volume medical text that greatly influenced medieval European medicine after its 13th-century Latin translation, was written by a physician from which ancient region?",
+["Greece","Persia (Iran)","China","Egypt"],1,
+"Al-Razi wrote the Al-Hawi in ancient Persia, and its Latin translation shaped medical practice in medieval Europe.",
+"Cross-cultural contributions are a classic history-of-pharmacology theme — expect a question naming a text and its culture of origin."],
+
+["During World War II, mass production of which drug dramatically reduced the U.S. Army's pneumonia death rate from about 18% to about 1%?",
+["Aspirin","Insulin","Penicillin","Digoxin"],2,
+"The ability to mass-produce penicillin during World War II sharply reduced deaths from infection, including pneumonia complicating combat wounds.",
+"This statistic is a good reminder of why antibiotic stewardship matters today — the drugs that once transformed survival can lose effectiveness with misuse."],
+
+["A medication created by adding a pure chemical to a natural substance is best described as:",
+["Totally synthesized","Partially synthesized","A biological toxin","A mineral supplement"],1,
+"Partially synthesized medications combine a natural substance with an added pure chemical, while totally synthesized medications are built entirely from combined pure chemicals.",
+"If a question distinguishes “partially” from “totally” synthesized, check whether a natural starting substance is still part of the mix."],
+
+["Human insulin can be mass-produced by inserting the human insulin gene into which organism?",
+["A pig","A cow","A nonpathogenic strain of Escherichia coli","A sheep"],2,
+"Genetic engineering allows the human insulin gene to be inserted into a nonpathogenic strain of E. coli, which then produces insulin identical to the human hormone.",
+"This is a good example of a synthetic drug reducing reliance on animal-sourced hormones."],
+
+["Pharmacogenetics is best described as the study of:",
+["How drugs are metabolized by the liver only","Individual genetic variability in response to medications","The history of drug discovery","Drug interactions with food"],1,
+"Pharmacogenetics analyzes a patient's genetic material to help predict which drug and dose will work best for that individual — already used in conditions like HIV and rheumatoid arthritis.",
+"Expect pharmacogenetics to expand into pain management and psychiatric dosing in future practice."],
+
+["Digoxin, a medication used to treat heart failure, is derived from which plant?",
+["White willow tree","Foxglove","Coca plant","Yam"],1,
+"Digoxin (Lanoxin) comes from the foxglove plant and has been used for cardiac conditions since the 1500s.",
+"Pair each plant-derived drug with its source: foxglove → digoxin, willow bark → aspirin, coca plant → procaine."],
+
+["Aspirin is a synthetic compound based on salicin, a substance naturally found in:",
+["Yams","The bark of the white willow tree","Foxglove leaves","Pregnant mare's urine"],1,
+"Salicin, found in white willow bark, is the natural compound on which acetylsalicylic acid (aspirin) is based.",
+"Another easy plant-source pairing likely to appear as a matching or multiple-choice item."],
+
+["The hormone replacement Premarin (conjugated estrogen) is derived from which animal source?",
+["Sheep wool","Pregnant mare's urine","Cow pancreas","Pig intestinal mucosa"],1,
+"Premarin is produced from the urine of pregnant mares, making horses the source of this conjugated estrogen replacement.",
+"Notice the pattern: mare urine → estrogen, cow/pig pancreas → insulin, sheep wool → lanolin."],
+
+["A devout Muslim patient who does not eat pork needs insulin. Which source would be the most appropriate choice?",
+["Porcine (pig-derived) insulin","Bovine (beef-derived) or synthetic/human insulin","Only injectable insulin from horses","There is no appropriate alternative"],1,
+"Because porcine insulin is derived from pigs, a patient whose religious practice prohibits pork would be better served by bovine-derived insulin or, more commonly today, synthetic human insulin, which avoids animal sourcing altogether.",
+"Respecting cultural and religious preferences in medication choice is a recurring NCLEX theme — always look for an alternative before assuming a patient must accept a conflicting treatment."],
+
+["Heparin, an anticoagulant, is most commonly extracted from which sources?",
+["Porcine intestinal mucosa and bovine lung","Human plasma only","Foxglove and willow bark","Pregnant mare's urine"],0,
+"Heparin is extracted from porcine intestinal mucosa and bovine lung tissue, which is why patients with certain allergies or religious restrictions may need this addressed before administration.",
+"Because heparin is animal-derived, confirm allergy history and discuss any cultural or religious concerns before giving it."],
+
+["A patient taking furosemide (Lasix) is at risk for losing which important mineral along with excess fluid?",
+["Calcium","Potassium","Iron","Iodine"],1,
+"Loop diuretics like furosemide cause the kidneys to excrete potassium along with excess water, so supplemental potassium chloride is often prescribed to prevent hypokalemia.",
+"Potassium is vital for normal heart function — monitor levels and encourage potassium-rich foods like bananas, oranges, and sweet potatoes."],
+
+["Which mineral is used specifically to treat goiter?",
+["Gold","Iodine","Magnesium sulfate","Zinc"],1,
+"Iodine is used to treat goiter, an enlargement of the thyroid gland, while gold is used for arthritis and magnesium sulfate for constipation or eclampsia.",
+"Minerals aren't just dietary supplements — several are used as targeted treatments for specific conditions."],
+
+["Radioactive iodine can be used both to diagnose and to treat thyroid conditions. What distinguishes the diagnostic use from the therapeutic use?",
+["The route of administration","The dose given","The patient's age","The time of day given"],1,
+"A small dose of radioactive iodine helps pinpoint thyroid problems for diagnosis, while a higher dose is used therapeutically to shrink thyroid tumors.",
+"This is a clear example of how dosage alone can change a substance from a diagnostic tool into a treatment."],
+
+["Botulinum toxin (Botox) is derived from which bacterium?",
+["Clostridium difficile","Clostridium botulinum","Staphylococcus aureus","Escherichia coli"],1,
+"Botox comes from Clostridium botulinum and, in tiny controlled doses, is used to treat muscle stiffness, spasticity, torticollis, and migraines.",
+"The same organism that causes life-threatening foodborne botulism also supplies a therapeutic medication — dose and purification make the difference."],
+
+["Which of the following is a disadvantage of synthetic medications mentioned in the pharmacology lecture?",
+["They are always more expensive to produce","They may cause psychosis, behavioral changes, or cardiac concerns","They cannot be mass-produced","They are never effective"],1,
+"Although synthetic medications are usually less expensive because they can be mass-produced, some carry risks such as psychiatric, neurological, or cardiac side effects.",
+"Being inexpensive to manufacture doesn't mean a synthetic drug is risk-free — always weigh side-effect profiles."],
+
+["A diuretic that helps the body eliminate excess fluid is an example of which category of drug action?",
+["Prophylactic","Curative","Diagnostic","Destructive"],1,
+"Curative drugs restore normal physiological function; a diuretic that helps rid the body of excess fluid falls into this category.",
+"Match each of the six categories to a simple example: curative = diuretic, prophylactic = pre-op antibiotic, diagnostic = barium, palliative = pain reliever, replacement = Synthroid, destructive = antineoplastic."],
+
+["Giving an antibiotic before surgery specifically to prevent a postoperative infection is an example of a drug used for which purpose?",
+["Curative","Prophylactic","Palliative","Replacement"],1,
+"Prophylactic drugs are given to prevent disease or disorders, such as antibiotics administered before surgery to prevent infection rather than to treat one that already exists.",
+"Timing is the clue here — “before” a problem occurs usually signals a prophylactic purpose."],
+
+["Barium, which a patient swallows so a radiologist can better visualize the digestive tract, is classified as which type of drug?",
+["Diagnostic","Palliative","Replacement","Destructive"],0,
+"Diagnostic drugs like barium help identify or visualize a disease process rather than treat it directly.",
+"If a substance's job is to help find a problem rather than fix one, it belongs in the diagnostic category."],
+
+["Levothyroxine sodium (Synthroid) is an example of which drug category?",
+["Curative","Destructive","Replacement","Prophylactic"],2,
+"Replacement drugs restore a substance the body is missing; Synthroid replaces thyroid hormone that the body no longer produces adequately.",
+"Any medication that “replaces” a missing hormone — thyroid hormone, insulin, estrogen — fits this category."],
+
+["Antineoplastic medications used to destroy cancerous tumors are classified as which type of drug?",
+["Palliative","Destructive","Diagnostic","Curative"],1,
+"Destructive drugs, such as antineoplastic agents, work by destroying tumors or microbes rather than restoring normal function.",
+"Destructive drugs are powerful but often toxic to healthy tissue too — monitor closely for adverse effects."],
+
+["A pain reliever given to a patient with terminal cancer does not cure the disease but makes the patient more comfortable. This is an example of which drug category?",
+["Curative","Palliative","Prophylactic","Replacement"],1,
+"Palliative drugs do not cure the underlying disease but improve the patient's comfort, as with pain relief in a terminal illness.",
+"Palliative care and palliative medications share the same goal: comfort over cure."],
+
+["Which of the following medication administration routes is generally OUTSIDE the scope of practice for an LPN/LVN?",
+["Oral medications","Subcutaneous injections","Rapid IV push medications","Intradermal injections"],2,
+"LPNs/LVNs generally may administer oral, rectal, ophthalmic, otic, intradermal, subcutaneous, and IV medications, but rapid IV push and medications through a central line are typically outside their scope of practice.",
+"Scope of practice varies by state — always verify your specific Board of Nursing regulations rather than assuming a national standard."]
+];
+
+const NUTR = [
+["What is the basal metabolic rate (BMR)?",
+["The total calories burned during exercise","The minimum energy the body uses at rest to maintain essential functions","The calories needed for muscle building","The energy used only during digestion"],1,
+"BMR represents the calories the body burns performing basic life-sustaining activities such as breathing, circulating blood, and maintaining temperature, even at complete rest.",
+"A higher BMR means a person can consume more calories without gaining weight — men typically have a higher BMR than women due to greater muscle mass."],
+
+["Which factor is most likely to DECREASE basal metabolic rate?",
+["Fever","Growth in childhood","Aging","Emotional stress"],2,
+"BMR decreases roughly 2% per decade after age 30, along with prolonged fasting and sleep, while fever, growth, and stress tend to increase it.",
+"Older adults often need fewer calories even when nutrient needs stay the same — quantity goes down, but quality still matters."],
+
+["Which of the following is classified as a macronutrient?",
+["Vitamin C","Iron","Carbohydrate","Zinc"],2,
+"Macronutrients — carbohydrates, proteins, fats, and water — are needed in large amounts and measured in grams, while micronutrients like vitamins and minerals are needed in much smaller amounts.",
+"Macronutrients provide calories; micronutrients regulate body processes but provide no calories themselves."],
+
+["The body breaks most carbohydrates down into which substance for cellular fuel?",
+["Amino acids","Glucose","Triglycerides","Cholesterol"],1,
+"Carbohydrates are the body's primary energy source and are broken down into glucose, which cells use for fuel.",
+"Fast-acting simple carbohydrates, like juice or regular soda, are the go-to treatment for a patient experiencing hypoglycemia."],
+
+["A nurse is teaching a patient about carbohydrate choices for everyday nutrition. Which recommendation is most appropriate?",
+["Choose refined sugars for quick energy at every meal","Choose whole grains, beans, fruits, and vegetables more often","Avoid all carbohydrates to prevent weight gain","Choose only simple carbohydrates"],1,
+"High-fiber complex carbohydrates such as whole grains, beans, and vegetables support bowel regularity and help manage blood glucose and cholesterol better than refined, added-sugar options.",
+"Not all complex carbohydrates are high in fiber — white rice is a common exception worth remembering."],
+
+["Which of the following is a primary function of dietary protein?",
+["Providing the body's main energy reserve","Building and repairing tissues","Regulating fluid balance exclusively","Absorbing fat-soluble vitamins"],1,
+"Proteins are made of amino acids the body uses to build and repair muscle, skin, and other tissues, and to produce enzymes, hormones, and antibodies.",
+"Patients recovering from surgery or wounds need increased protein intake to support tissue repair and healing."],
+
+["A postoperative patient and a pregnant patient both have something in common regarding their nutritional needs. What is it?",
+["Both need increased protein intake","Both need decreased fluid intake","Both need decreased protein intake","Neither needs any dietary changes"],0,
+"Both surgical recovery and pregnancy increase the body's demand for protein to support tissue repair, wound healing, and fetal or maternal tissue growth.",
+"Whenever a scenario mentions “healing” or “growth,” think about whether protein needs are increased."],
+
+["Which type of fat is generally considered the least healthy because it raises LDL cholesterol while lowering HDL cholesterol?",
+["Unsaturated fat","Saturated fat","Trans fat","Monounsaturated fat"],2,
+"Trans fats are chemically altered through partial hydrogenation and uniquely raise LDL cholesterol while lowering HDL cholesterol, making them the least healthy fat type.",
+"For a patient with elevated LDL cholesterol, recommend unsaturated fats such as olive oil in place of saturated or trans fats."],
+
+["Which lipoprotein is associated with a LOWER risk of cardiovascular disease?",
+["LDL","HDL","VLDL","Triglycerides"],1,
+"HDL (high-density lipoprotein) is linked to lower cardiovascular risk, while LDL is linked to a greater risk of plaque buildup in the arteries.",
+"Simple memory trick: HDL is the “Healthy” lipoprotein, LDL is the “Less desirable” one."],
+
+["Which vitamins are fat-soluble and therefore depend on adequate fat intake for absorption?",
+["B vitamins and vitamin C","Vitamins A, D, E, and K","Vitamin C and folate","Only vitamin D"],1,
+"Vitamins A, D, E, and K are fat-soluble, which is why dietary fat helps the body absorb them, while B vitamins and vitamin C are water-soluble.",
+"Fat-soluble vitamins can accumulate in the body and cause toxicity, unlike most water-soluble vitamins, which are excreted in urine."],
+
+["A patient's lab work reveals low hemoglobin. Which mineral deficiency is the most likely underlying cause?",
+["Calcium","Iron","Iodine","Zinc"],1,
+"Iron is essential for hemoglobin production, so a deficiency leads to decreased hemoglobin and reduced oxygen-carrying capacity in the blood.",
+"Connect iron deficiency with anemia, vitamin C deficiency with scurvy, and vitamin D deficiency with rickets in children — favorite exam pairings."],
+
+["Which population is at the GREATEST risk for rapid dehydration due to a higher percentage of body water and immature kidney function?",
+["Middle-aged adults","Infants","Adolescents","Athletes"],1,
+"Infants have a higher percentage of body water than adults and can become dehydrated more quickly, making close monitoring of intake and output essential.",
+"Both infants and older adults are at increased risk for dehydration — monitor vital signs, mucous membranes, urine output, and daily weight in both groups."],
+
+["During pregnancy, how much additional protein per day is generally recommended to support fetal and maternal tissue growth?",
+["25–50 g/day","75–100 g/day","150–200 g/day","There is no increased need"],1,
+"Pregnancy increases protein needs to approximately 75–100 g/day to support the growth of fetal and maternal tissue.",
+"Pregnancy also increases the need for calcium (about 1,200 mg/day), iron, and folic acid (600 mcg/day)."],
+
+["Folic acid supplementation during pregnancy is specifically important for preventing which condition?",
+["Gestational diabetes","Neural tube defects","Iron-deficiency anemia","Preeclampsia"],1,
+"Folic acid, recommended at about 600 mcg/day during pregnancy, helps prevent neural tube defects in the developing fetus.",
+"Women of childbearing age are often encouraged to take folic acid even before conception, since neural tube defects develop very early."],
+
+["A pregnant patient reports persistent vomiting, significant weight loss, and inability to tolerate fluids. The nurse should suspect which condition?",
+["Physiologic anemia of pregnancy","Hyperemesis gravidarum","Gestational diabetes","Normal morning sickness"],1,
+"While mild nausea and vomiting are common in pregnancy, persistent vomiting with weight loss and dehydration suggests hyperemesis gravidarum, which should be reported to the provider.",
+"Distinguish ordinary pregnancy-related nausea (small, frequent meals) from hyperemesis gravidarum, which requires medical evaluation."],
+
+["Physiologic anemia of pregnancy occurs because:",
+["Iron intake decreases sharply","Blood plasma volume increases more than red blood cell volume, causing dilution","The fetus consumes all maternal iron","Red blood cell production stops"],1,
+"During pregnancy, plasma volume expands faster than red blood cell mass, diluting the concentration of red blood cells and producing a physiologic (dilutional) anemia.",
+"Because iron needs still rise in pregnancy, patients typically take prenatal vitamins containing iron even though this dilutional effect is expected."],
+
+["A lactating patient asks how much fluid she should drink daily. The nurse's best response is approximately:",
+["4–6 cups per day","8–12 cups per day","About 3 quarts (roughly 12 cups) per day","No increase from pre-pregnancy needs"],2,
+"Fluid needs increase significantly during lactation, to roughly 3 quarts (about 12 cups, or 2.8 liters) daily, to support adequate milk production.",
+"Additional calories are also generally needed during lactation to support milk production, on top of the increased fluid requirement."],
+
+["Which component of breast milk provides passive immunity and helps protect the infant from viral and bacterial infections?",
+["Lactose","Secretory IgA","Cholesterol","Bifidus factor"],1,
+"Secretory IgA in breast milk protects the infant from viruses and bacteria, contributing to breastfeeding's immune-boosting benefits.",
+"Colostrum, the first milk produced, is especially high in immunoglobulins G and A, offering strong early protection to the newborn."],
+
+["Which of the following newborn findings would be a warning sign requiring further evaluation of breastfeeding adequacy?",
+["Six or more wet diapers daily by day 5–7","Return to birth weight by about 2 weeks","Weight loss greater than approximately 10%","Yellow, loose stools"],2,
+"Losing more than about 10% of birth weight is a warning sign of inadequate intake, while adequate wet diapers, appropriate weight regain, and normal newborn stools are all reassuring findings.",
+"Weight gain and urine output remain the two best indicators that a newborn is getting enough milk."],
+
+["Which maternal condition is a contraindication to breastfeeding?",
+["Well-controlled hypothyroidism","Untreated, active tuberculosis","Seasonal allergies","History of gestational diabetes, now resolved"],1,
+"Untreated active tuberculosis is a contraindication to breastfeeding, along with maternal HIV infection, certain chemotherapy or radiation treatments, and illicit drug use or dependence.",
+"An infant diagnosed with galactosemia also cannot be breastfed, since the infant — not the mother — is unable to metabolize the milk sugar."],
+
+["A parent is preparing powdered infant formula at home. The nurse's most important safety teaching point is to:",
+["Add extra water to make the formula last longer","Add the exact amount of water listed on the label","Add cereal to thicken the formula","Warm the formula in the microwave"],1,
+"Diluting formula with extra water to stretch supply is dangerous because it can cause inadequate nutrition and dangerous electrolyte imbalances; the exact water amount on the label must be used.",
+"Never microwave formula — it can create hot spots that burn the infant even when the outside of the bottle feels only warm."],
+
+["Why should cow's milk not replace breast milk or formula before 12 months of age?",
+["It is too expensive","It does not provide the proper balance of nutrients and may stress the infant's kidneys","It causes immediate allergic reactions in all infants","It contains too little fat"],1,
+"Cow's milk has excess protein and minerals for an infant's kidneys to process and is a poor source of iron, so it should not replace breast milk or formula before 12 months.",
+"Whole milk is typically introduced around 12 months and continued until about 24 months, per most pediatric nutrition guidelines."],
+
+["Honey should be avoided in an infant's diet before 12 months of age because of the risk of:",
+["Dental caries","Infant botulism","Iron-deficiency anemia","Milk protein allergy"],1,
+"Honey can contain Clostridium botulinum spores, which an infant's immature digestive system cannot handle, leading to infant botulism.",
+"Pair this with the other big infant-safety rule: no cow's milk as the primary drink before 12 months either."],
+
+["At approximately what age are solid foods typically introduced into an infant's diet, and why?",
+["2 months, because the infant needs more calories","6 months, when the infant is developmentally ready and fetal iron stores are declining","10 months, to avoid choking risk","At birth, alongside breastfeeding"],1,
+"Solid foods are generally introduced around 6 months, both because the infant is developmentally ready and because maternal iron stores carried over from birth begin to decline around this time.",
+"Introduce new foods one at a time, several days apart, so any allergic reaction can be traced to a specific food."],
+
+["An infant with a cleft palate has the most difficulty with which aspect of feeding?",
+["Forming a tight lip seal","Creating adequate suction","Chewing solid food","Tasting sweet flavors"],1,
+"A cleft palate prevents the infant from creating adequate suction, which can cause prolonged feedings, milk escaping through the nose, and poor weight gain.",
+"A cleft lip mainly affects the lip seal, while a cleft palate affects the roof of the mouth and suction — knowing this distinction helps you choose the right feeding device."],
+
+["Which finding is most consistent with iron-deficiency anemia?",
+["Bleeding gums and poor wound healing","Fatigue, pallor, and shortness of breath with activity","Bowed legs and delayed growth","Dry eyes and night blindness"],1,
+"Iron-deficiency anemia reduces the blood's oxygen-carrying capacity, leading to fatigue, pallor, tachycardia, and shortness of breath with exertion.",
+"Bleeding gums point to scurvy, bowed legs point to rickets, and dry eyes/night blindness point to vitamin A deficiency — keep these deficiency patterns distinct."],
+
+["A nurse is teaching a patient how to take a prescribed iron supplement. Which instruction is correct?",
+["Take it with milk to reduce stomach upset","Take it with a source of vitamin C to enhance absorption","Expect the stool to turn white or clay-colored","Take it with an antacid to protect the stomach"],1,
+"Vitamin C enhances iron absorption, while milk, calcium, and antacids can interfere with it; patients should also be told that dark green or black stools are an expected, harmless effect of oral iron.",
+"Warn patients that liquid iron can stain teeth — use a straw or dropper and rinse the mouth afterward."],
+
+["Which set of findings is most consistent with scurvy (vitamin C deficiency)?",
+["Bowed legs and widened wrists","Swollen or bleeding gums and poor wound healing","Fatigue and rapid heart rate only","Muscle weakness and delayed growth"],1,
+"Scurvy results from prolonged vitamin C deficiency and classically presents with bleeding gums, easy bruising, poor wound healing, and fatigue, since vitamin C is essential for collagen production.",
+"Treat scurvy by encouraging vitamin C-rich foods such as citrus fruits, strawberries, bell peppers, and broccoli, plus supplements as prescribed."],
+
+["A child presents with bowed legs, delayed growth, and widened wrists. This presentation is most consistent with:",
+["Scurvy","Rickets","Pica","Kwashiorkor"],1,
+"Rickets results from prolonged vitamin D deficiency preventing normal bone mineralization, leading to soft, weak, easily deformed bones and findings like bowed legs and widened wrists or ankles.",
+"Vitamin D helps the intestines absorb calcium and phosphorus — without it, bones cannot mineralize properly even if dietary calcium is adequate."],
+
+["A newborn is diagnosed with phenylketonuria (PKU) on the newborn screening test. Lifelong dietary management primarily involves restricting which substance?",
+["Lactose","Gluten","Phenylalanine","Fructose"],2,
+"PKU prevents the body from properly breaking down phenylalanine, so patients must follow a lifelong diet limiting phenylalanine, found mostly in protein-containing foods and the sweetener aspartame.",
+"Because PKU has serious consequences if untreated, all U.S. newborns are screened for it shortly after birth."],
+
+["How can periodontal disease affect a patient's nutritional status?",
+["It increases appetite for firm foods","Pain and loose teeth can decrease food intake and increase the risk of malnutrition","It has no effect on eating ability","It only affects the sense of taste"],1,
+"Periodontal disease causes pain and loose teeth that make chewing difficult, which can decrease overall food intake and raise the risk for malnutrition.",
+"Offer easy-to-chew, nutrient-dense foods and arrange a dental evaluation for patients with significant gum disease affecting intake."],
+
+["Which of the following is a common cause of dysphagia?",
+["Iron-deficiency anemia","Stroke (cerebrovascular accident)","Vitamin C deficiency","Hyperglycemia"],1,
+"Neurologic events like stroke, along with Parkinson's disease, dementia, or head and neck cancers, are common causes of dysphagia because they impair the coordination needed to swallow safely.",
+"A patient can silently aspirate without any coughing — new respiratory symptoms or a drop in oxygen saturation after meals should always be investigated."],
+
+["Which finding during a meal would MOST concern the nurse for possible dysphagia and aspiration risk?",
+["The patient finishes the meal quickly","A wet or gurgling voice after swallowing","The patient asks for a second serving","The patient prefers warm food"],1,
+"A wet or gurgling voice after swallowing suggests that liquid or food has entered the airway rather than being fully swallowed, a key warning sign of aspiration risk.",
+"Other red flags include coughing or choking during meals, drooling, and food pocketing in the cheeks — stop feeding and reassess if any occur."],
+
+["When feeding a patient with known dysphagia, the nurse should position the patient at approximately what angle?",
+["Flat, lying supine","30 degrees, side-lying only","Upright, approximately 90 degrees","Trendelenburg position"],2,
+"Positioning the patient upright at approximately 90 degrees during feeding, and keeping them upright for 30–60 minutes afterward, reduces the risk of aspiration.",
+"Chin-tuck positioning or feeding on the stronger side should only be used when specifically recommended by a swallowing evaluation — never improvise."],
+
+["A patient's swallowing evaluation specifies a particular thickened liquid level. Which action by the nurse is appropriate?",
+["Thicken the patient's liquids further if they seem to be coughing more","Give only the exact liquid consistency prescribed after the evaluation","Switch back to thin liquids once symptoms improve, without reassessment","Assume thicker liquids are always safer for every patient"],1,
+"Food texture and liquid thickness are separate medical orders based on an individualized swallowing evaluation; a nurse should never independently thicken, thin, or otherwise change a patient's prescribed consistency.",
+"Thicker is not automatically safer for every patient — always follow the specific plan from the swallowing evaluation."],
+
+["Which food item would be considered part of a FULL liquid diet but NOT a clear liquid diet?",
+["Apple juice","Chicken broth","Vanilla pudding","Plain black tea"],2,
+"Full liquid diets include clear liquids plus opaque items like milk, strained cream soups, and pudding, while clear liquid diets are limited to transparent liquids without pulp or dairy.",
+"Clear liquid diets are not nutritionally complete and are generally intended for short-term use only, such as 3–5 days."],
+
+["The nursing team is choosing between enteral and parenteral nutrition for a patient whose GI tract is fully functional but who cannot swallow safely. Which is generally preferred, and why?",
+["Parenteral nutrition, because it bypasses swallowing entirely","Enteral nutrition, because it uses and maintains the function of the GI tract","Parenteral nutrition, because it has a lower infection risk","Neither is appropriate; oral feeding should continue regardless of risk"],1,
+"When the GI tract is functioning, enteral nutrition is generally preferred over parenteral nutrition because it maintains gut function, carries a lower infection risk, and is typically less expensive.",
+"Remember the guiding principle: “if the gut works, use it.”"],
+
+["A gastrostomy tube (G-tube/PEG) differs from a nasogastric (NG) tube primarily in that it:",
+["Delivers formula to the small intestine instead of the stomach","Is inserted through the abdominal wall and is typically used for longer-term feeding","Cannot be used for medication administration","Requires no head-of-bed elevation during feeding"],1,
+"A G-tube/PEG is placed through the abdominal wall directly into the stomach and is generally used for longer-term nutritional support, unlike the nose-to-stomach NG tube, which is typically short term.",
+"Whatever the tube type, keep the head of the bed elevated 30–45 degrees during feeding to reduce aspiration risk."],
+
+["A patient with heart failure and significant edema is placed on a sodium-restricted diet. What is the primary purpose of this restriction?",
+["To increase muscle mass","To reduce sodium-related fluid retention and help control blood pressure","To prevent hypoglycemia","To promote bowel regularity"],1,
+"Because sodium causes the body to retain water, restricting sodium intake helps reduce fluid retention and control blood pressure in conditions like heart failure, hypertension, and certain kidney or liver diseases.",
+"Question the use of salt substitutes for these patients unless specifically approved, since many contain potassium, which can be dangerous in kidney disease."],
+
+["When teaching a patient to read a nutrition facts label, what should the nurse emphasize FIRST?",
+["The total calories listed on the entire package","The serving size, since every other number applies to just one serving","The percent daily value for sodium","The ingredient list"],1,
+"Every number on a nutrition facts label is based on a single serving size, so a patient must know the serving size and how many servings they consumed before interpreting calories, sodium, or other nutrients.",
+"Quick rule of thumb: 5% daily value or less is considered low, and 20% or more is considered high, for any given nutrient."],
+
+["A diabetic patient asks the nurse whether a carbohydrate-controlled diet means avoiding carbohydrates altogether. The nurse's best response is:",
+["“Yes, carbohydrates should be eliminated completely.”","“No, the goal is a consistent, appropriate amount of nutrient-dense carbohydrate at meals, not zero carbohydrates.”","“Only fruit needs to be avoided.”","“Carbohydrates only matter if you are overweight.”"],1,
+"A carbohydrate-controlled diet focuses on consistent, individualized amounts of nutrient-dense, high-fiber carbohydrate sources rather than eliminating carbohydrates entirely, since carbohydrates have the greatest immediate effect on blood glucose.",
+"Concentrated sweets and refined carbohydrates should be limited, but the overall meal plan must still be individualized."],
+
+["Which of the following is the primary purpose of a high-fiber diet?",
+["To reduce blood pressure","To promote regular bowel movements and help prevent constipation","To increase muscle mass","To reduce blood glucose immediately"],1,
+"Fiber adds bulk to the stool and promotes gastrointestinal motility, helping to promote regular bowel movements and prevent or treat constipation.",
+"Increase fluids along with fiber intake, unless fluids are restricted, to help the fiber work effectively."],
+
+["Which age group is described as often having a variable appetite from day to day, requiring the nurse or caregiver to offer small portions without turning mealtime into a struggle?",
+["School-age children","Preschoolers (1–5 years)","Adolescents","Older adults"],1,
+"Preschoolers often show erratic and ritualistic eating patterns and a variable appetite as growth slows, so caregivers should offer nutritious choices without forcing eating or using food as a reward.",
+"Encourage self-feeding and finger foods at this age to promote a sense of independence around mealtime."],
+
+["Which nutrients are of particular importance during the adolescent growth spurt?",
+["Vitamin K and biotin","Protein, calcium, vitamin D, and iron","Vitamin B12 only","Sodium and chloride"],1,
+"Rapid growth during adolescence increases the need for protein, calcium, vitamin D, and iron, with girls needing additional iron once menstruation begins.",
+"Peer influence, activity level, independence, and body image all shape adolescent food choices — teaching should account for these social factors too."],
+
+["Which of the following is a common nutrition-related risk factor for older adults?",
+["Increased thirst sensation","Decreased thirst sensation and reduced taste or smell","Improved dentition with age","Increased bowel motility"],1,
+"Normal aging often brings decreased thirst sensation, reduced taste and smell, dental problems, and slower bowel motility, all of which increase the risk for malnutrition and dehydration.",
+"Unintentional weight loss in an older adult is a finding that requires assessment — never assume it is simply a normal part of aging."],
+
+["A nurse is caring for a patient with a BMI of 32 who has also lost significant muscle mass and shows signs of poor wound healing. The nurse should recognize that:",
+["This patient cannot be malnourished because the BMI indicates obesity","A patient with obesity can still be malnourished, and body size alone does not rule this out","Malnutrition only occurs in patients with a low BMI","The muscle loss is unrelated to nutrition"],1,
+"Malnutrition can occur at any body size, so a patient with obesity can still show signs like muscle loss, weakness, and delayed wound healing; BMI is only a screening tool requiring further assessment.",
+"Look beyond body size — assess weight trends, actual intake, and muscle wasting rather than relying on BMI alone."],
+
+["Which nursing intervention is most appropriate for a patient experiencing constipation?",
+["Encourage the patient to ignore the urge to defecate until a convenient time","Encourage fluids, gradually increase fiber, and promote mobility","Restrict all fluids until the bowel movement occurs","Discourage physical activity to conserve energy"],1,
+"Encouraging adequate fluids, gradually increasing fiber, promoting mobility, and responding promptly to the urge to defecate all support normal bowel function and relieve or prevent constipation.",
+"Ignoring the urge to defecate is one of the most common contributors to constipation — encourage patients to respond to the urge promptly."],
+
+["A patient is observed repeatedly eating small amounts of soil and paper. This behavior, known as pica, should prompt the nurse to assess for which underlying condition?",
+["Hyperthyroidism","Iron-deficiency anemia and other nutrient deficiencies","Hypertension","Vitamin K excess"],1,
+"Pica, the persistent eating of nonfood substances, is often associated with iron-deficiency anemia and other nutritional deficiencies, as well as risks like lead exposure or intestinal obstruction.",
+"Because pica can indicate a real deficiency or toxic exposure, the response includes preventing access to hazardous substances and obtaining ordered lab testing, not just discouraging the behavior."],
+
+["Which finding is most concerning in a patient with suspected bulimia nervosa?",
+["Significantly low body weight","Hypokalemia and dehydration from self-induced vomiting","Bradycardia only","Elevated blood glucose"],1,
+"Bulimia nervosa often occurs at a normal or near-normal body weight, but repeated self-induced vomiting places the patient at risk for dehydration and electrolyte imbalances, especially hypokalemia.",
+"Also assess for dental enamel erosion and swollen salivary glands, physical clues that can reveal bulimia even when weight appears normal."],
+
+["A patient with anorexia nervosa is beginning nutritional rehabilitation after prolonged severe restriction. The nurse should monitor closely for which potentially dangerous complication?",
+["Refeeding syndrome","Hyperkalemia from overfeeding","Immediate weight gain intolerance","Vitamin A toxicity"],0,
+"Reintroducing nutrition too quickly after prolonged starvation can cause refeeding syndrome, a dangerous shift in fluids and electrolytes, so nutrition is increased gradually with close monitoring.",
+"Distinguish anorexia nervosa, a psychiatric eating disorder with distorted body image, from “anorexia” as a mere symptom of appetite loss due to illness or chemotherapy."],
+
+["When collecting subjective nutrition assessment data, which of the following would the nurse specifically ask about?",
+["Serum albumin level","Recent unintentional weight loss or gain and usual food intake","Wound culture results","Radiographic imaging findings"],1,
+"Subjective nutrition data includes patient-reported information such as recent weight changes, appetite, a 24-hour diet recall, chewing or swallowing problems, and cultural or religious food preferences.",
+"Unintentional weight loss, difficulty chewing or swallowing, and decreased intake are all subjective red flags for malnutrition risk."],
+
+["Which of the following is considered OBJECTIVE data during a nutrition assessment?",
+["The patient's report of nausea","The patient's stated food preferences","Dry mucous membranes and poor skin turgor observed on exam","The patient's description of appetite"],2,
+"Objective nutrition data includes measurable, observable findings such as weight changes, vital signs, skin and mucous membrane condition, muscle wasting, and relevant lab results, unlike the patient's self-reported symptoms.",
+"For every abnormal objective finding, ask yourself: “How could this affect the patient's ability to eat or maintain adequate nutrition?”"],
+
+["A patient recovering from surgery is having their diet advanced. Which statement about diet progression is TRUE?",
+["Every postoperative patient must start with a clear liquid diet","Diet advancement should be individualized based on the type of surgery, alertness, and ability to swallow safely","Diet progression is identical for every type of procedure","Patients must complete every diet stage in order regardless of tolerance"],1,
+"Diet progression after surgery is individualized based on factors like the type of procedure, level of consciousness, ability to swallow safely, and provider orders — not every patient needs to start with clear liquids or progress through every stage.",
+"Always advance the diet as tolerated and as prescribed, rather than assuming a one-size-fits-all progression."],
+
+["Before assisting a patient with feeding, which action should the nurse take FIRST?",
+["Cut all the food into bite-sized pieces immediately","Verify the patient's identity, diet order, allergies, and NPO status","Begin feeding as quickly as possible to save time","Ask the family to leave the room"],1,
+"Before any feeding assistance, the nurse must verify the correct patient, diet order, known allergies, and NPO status to prevent serious safety errors.",
+"Safety always comes first in feeding assistance, but maintaining the patient's dignity and independence matters just as much."],
+
+["A hospitalized patient is not eating well. What should the nurse do FIRST?",
+["Immediately request a feeding tube","Assess and address the underlying cause of poor intake","Document the finding and move on without further action","Assume the patient simply dislikes the food"],1,
+"Because poor intake can result from many different causes — nausea, pain, unfamiliar food, fatigue, or medication effects — the nurse should first assess why the patient isn't eating before selecting an intervention.",
+"Small, frequent, nutrient-dense meals and addressing pain or nausea before mealtime are often more effective first steps than escalating to artificial nutrition."],
+
+["Which of the following would be classified as a full liquid, rather than a clear liquid, diet item?",
+["Clear apple juice","Plain gelatin","Strained cream soup","Black coffee"],2,
+"Strained cream soup is opaque and part of the full liquid diet, while clear apple juice, gelatin, and black coffee (without milk) all qualify as clear liquids.",
+"If you can see through it and it has no pulp or dairy, it's a clear liquid; if it's opaque like milk or pudding, it belongs on the full liquid diet."],
+
+["What is the most important teaching point regarding a bland or GI-soft diet?",
+["It requires eliminating all carbohydrates","It limits fried foods, strong seasonings, and high-fat foods to reduce GI irritation","It is identical to a pureed diet","It requires no chewing at all"],1,
+"A bland or GI-soft diet limits fried foods, strong seasonings, high-fat foods, and individual triggers to reduce gastrointestinal irritation, and should not be confused with a soft diet (less chewing) or a pureed diet (no lumps, no chewing).",
+"Soft, bland, and pureed diets serve different purposes — treat these terms as distinct rather than interchangeable on an exam."],
+
+["Which statement about therapeutic diets and patient-centered care is TRUE?",
+["Cultural and religious food preferences should be disregarded once a therapeutic diet is prescribed","A therapeutic diet should be individualized to the patient's condition, preferences, and cultural practices","All patients on the same therapeutic diet require identical meal plans","Patient teaching about therapeutic diets is unnecessary once the order is written"],1,
+"A therapeutic diet should be individualized, taking into account the patient's medical condition, allergies, cultural and religious practices, food preferences, and ability to obtain, prepare, chew, and swallow food.",
+"Patients are more likely to follow a therapeutic diet long-term when they understand the relationship between the diet and their disease."],
+
+["The nurse is teaching about foods high in potassium for a patient taking a potassium-losing diuretic. Which foods should the nurse recommend?",
+["White bread and pasta","Bananas, oranges, and sweet potatoes","Butter and cream cheese","Plain white rice"],1,
+"Bananas, oranges, and sweet potatoes are all good dietary sources of potassium, which helps replace losses caused by potassium-wasting diuretics such as furosemide.",
+"Pair potassium-rich food teaching with monitoring of serum potassium levels for patients on loop diuretics."],
+
+["Which statement best reflects safe, respectful practice when assisting a patient with feeding?",
+["Rush through the meal to allow time for other tasks","Encourage as much independence as possible while following prescribed aspiration precautions","Scrape food off the patient's face with a spoon without asking","Skip oral hygiene before and after the meal to save time"],1,
+"Safe feeding assistance means allowing the patient as much independence as possible, giving small bites with time to swallow, following any prescribed aspiration precautions, and maintaining the patient's dignity throughout.",
+"Document the percentage of food eaten and fluids consumed in milliliters — precise documentation supports ongoing nutritional assessment."]
+];
+
+const IMMUNE = [
+["Which best describes a pathogen's “reservoir”?",
+["The route by which a pathogen leaves the body","The place where a pathogen lives, grows, and multiplies","The person who becomes infected next","The device used to sterilize equipment"],1,
+"The reservoir is the source where a pathogen lives and may grow and multiply — this can be a person, an animal, or the environment, such as standing water.",
+"A person can be a reservoir without symptoms, known as a carrier — think of asymptomatic MRSA colonization in the nose as a classic example."],
+
+["A patient is found to be colonized with MRSA in the nose but shows no signs of infection. This patient is best described as:",
+["Cured","A carrier","In septic shock","Immune to all bacteria"],1,
+"A carrier harbors a pathogen without showing symptoms of infection but can still transmit the organism to others, as with MRSA nasal colonization.",
+"Colonization is not the same as infection — colonized patients often still require the same infection-control precautions to prevent spreading the organism."],
+
+["Which of the following correctly identifies the six links in the chain of infection, in order?",
+["Susceptible host → portal of entry → mode of transmission → portal of exit → reservoir → infectious agent","Infectious agent → reservoir → portal of exit → mode of transmission → portal of entry → susceptible host","Reservoir → infectious agent → susceptible host → portal of entry → mode of transmission → portal of exit","Portal of entry → reservoir → infectious agent → mode of transmission → portal of exit → susceptible host"],1,
+"The chain of infection flows from the infectious agent, to its reservoir, out through a portal of exit, via a mode of transmission, into a portal of entry, and finally to a susceptible host.",
+"Breaking any single link in this chain — for example, through hand hygiene or PPE — can prevent the infection from spreading."],
+
+["Coughing and sneezing represent which link in the chain of infection for a respiratory illness?",
+["Portal of entry","Mode of transmission","Portal of exit","Susceptible host"],2,
+"Coughing and sneezing are the route by which respiratory pathogens escape (exit) the infected person's body, making this the portal of exit.",
+"Simple distinction: portal of exit = how it gets OUT, portal of entry = how it gets IN, mode of transmission = how it gets AROUND."],
+
+["Which group of patients would be considered the MOST susceptible hosts for infection in a healthcare setting?",
+["Healthy young adults with no comorbidities","Immunosuppressed, diabetic, elderly, and burn patients","Patients scheduled for routine outpatient visits","Patients who have received all recommended vaccines"],1,
+"Susceptible hosts are common in healthcare settings and often include patients who are immunosuppressed, have diabetes, are elderly or very young, or have surgical or burn wounds compromising normal defenses.",
+"Recognizing high-risk susceptible hosts helps prioritize which patients need the most vigilant infection-prevention measures."],
+
+["Bacteria that require oxygen to survive, such as many organisms found on the skin, are classified as:",
+["Anaerobic","Aerobic","Spore-forming only","Prions"],1,
+"Aerobic bacteria need oxygen to live, such as those commonly found on the skin, while anaerobic bacteria, like many in the GI tract, survive without oxygen.",
+"Knowing whether an organism is aerobic or anaerobic can help explain why an infection develops in a particular body location."],
+
+["Which statement accurately distinguishes bacteria from viruses?",
+["Bacteria always require a host cell to reproduce, while viruses do not","Viruses depend on host cells to reproduce, while many bacteria can live and reproduce independently","Both bacteria and viruses are killed effectively by antibiotics","Neither bacteria nor viruses can form spores"],1,
+"Bacteria are independent single-celled organisms that can often live and reproduce outside a host under the right conditions, while viruses must hijack a host cell's machinery to make copies of themselves.",
+"This is exactly why antibiotics work against bacteria but are ineffective against viral infections — antibiotics won't cure a cold or the flu."],
+
+["Antibiotics are sometimes associated with triggering an overgrowth of Candida, causing oral thrush. Why does this happen?",
+["Antibiotics directly stimulate fungal growth","Antibiotics disrupt normal bacterial flora, allowing Candida to overgrow","Candida is resistant to all antifungal medications","Thrush is unrelated to antibiotic use"],1,
+"Antibiotics can disrupt the normal bacterial flora that usually keeps Candida in check, allowing the fungus to overgrow and cause oral candidiasis (thrush).",
+"Fungal infections are treated with antifungals, not antibiotics — more antibiotics would only worsen the underlying flora disruption."],
+
+["Trichinosis is a disease caused by which type of infectious agent, typically acquired by eating undercooked meat?",
+["A prion","A helminth (roundworm)","A protozoan","A rickettsia"],1,
+"Trichinosis is caused by the roundworm Trichinella spiralis and is acquired by eating raw or undercooked meat from pigs or wild animals containing the larvae.",
+"Helminths (worms) are transmitted through skin penetration of larvae or ingestion of eggs — thorough cooking of meat helps prevent trichinosis specifically."],
+
+["Which infectious agent causes abnormal folding of normal cellular proteins, has a long incubation period, produces no inflammatory response, and is invariably fatal?",
+["Protozoa","Helminths","Prions","Rickettsia"],2,
+"Prions are unique infectious agents that cause abnormal folding of brain proteins, leading to progressive, fatal neurological disease without triggering a typical inflammatory response.",
+"Creutzfeldt-Jakob disease in humans and “mad cow disease” in cattle are the classic prion disease examples worth remembering."],
+
+["During an abdominal wound assessment, the nurse notes reflexive tensing of the abdominal muscles and increased verbalized pain when pressure is quickly released. This finding is called:",
+["Guarding","Rebound tenderness","Peristalsis","Palpation"],1,
+"Rebound tenderness occurs when releasing pressure after moderately deep palpation causes increased pain, a finding commonly associated with conditions such as appendicitis.",
+"Guarding (muscle tensing during palpation) and rebound tenderness (pain on release) are related but distinct findings — both suggest possible peritoneal irritation."],
+
+["Which statement about the inflammatory response is accurate?",
+["Inflammation only occurs when an infection is present","Inflammation can occur with any tissue injury, whether or not infection is present","Inflammation always requires antibiotic treatment","Inflammation prevents phagocytosis from occurring"],1,
+"The inflammatory response occurs with any injury to the body — from pathogens, trauma, or other causes — and infection may or may not be present at all.",
+"Increased blood flow, fluid moving into tissue, and white blood cells performing phagocytosis are the three key components of this protective response."],
+
+["What is the correct term for a confined pocket of pus that forms in tissue as the body's immune system fights an infection?",
+["Cellulitis","Abscess","Gangrene","Necrosis"],1,
+"An abscess is a localized, walled-off collection of pus containing white blood cells, bacteria, and dead tissue that the body forms to contain the infection.",
+"An abscess often requires incision and drainage (I&D) in addition to antibiotics, since antibiotics alone may not fully penetrate the walled-off pocket."],
+
+["Unlike an abscess, cellulitis is best described as:",
+["A walled-off pocket of pus","A flat, spreading bacterial infection of the deeper skin layers and subcutaneous tissue","A collection of dead tissue with no blood supply","A viral skin rash"],1,
+"Cellulitis is a bacterial infection that spreads through the deeper layers of the skin and underlying fat tissue, causing redness, warmth, swelling, and pain that spreads outward rather than staying walled off.",
+"Monitor and mark the borders of cellulitis redness so you can track whether the infection is spreading despite treatment."],
+
+["Thick, white-yellow-green fluid containing white blood cells and cellular debris from an infection is called:",
+["Serous drainage","Sanguineous drainage","Purulent drainage","Serosanguineous drainage"],2,
+"Purulent drainage is thick fluid caused by infection, containing white blood cells and cellular debris, and can appear white, yellow, pink, or green-tinged.",
+"Learn all four drainage types together: serous (clear, watery), serosanguineous (pale pink, blood-tinged), sanguineous (bloody), and purulent (thick, infected)."],
+
+["Which term describes the death of tissue due to infection or a lack of adequate blood flow?",
+["Cellulitis","Gangrene","Bacteremia","Pyemia"],1,
+"Gangrene refers to dead tissue caused by infection or an interruption in blood flow, and severe cases may require surgical debridement or amputation.",
+"Necrosis is the broader term for tissue or cell death from any cause, while gangrene specifically involves dead tissue related to infection or poor perfusion."],
+
+["What does the term bacteremia specifically mean?",
+["A life-threatening organ dysfunction caused by infection","The presence of bacteria in the bloodstream","A localized skin infection","A confirmed diagnosis of sepsis"],1,
+"Bacteremia simply means bacteria are present in the bloodstream; it can be transient and does not automatically mean the patient has sepsis.",
+"Remember: bacteremia describes the presence of bacteria in the blood, while sepsis describes the body's dangerous, dysregulated response to an infection."],
+
+["Which of the following best defines sepsis?",
+["A localized wound infection with mild redness","A life-threatening, dysregulated body response to infection that causes organ dysfunction","The normal healing process after surgery","A type of allergic reaction"],1,
+"Sepsis is a life-threatening condition that occurs when the body's response to an infection becomes dysregulated and widespread, leading to organ dysfunction.",
+"Early signs of sepsis — new confusion, restlessness, increased heart and respiratory rate — can be subtle, so trust changes reported by family members, not just the numbers."],
+
+["Why does sepsis often cause hypotension?",
+["Because blood vessels constrict tightly, raising resistance","Because widespread vasodilation and capillary leakage reduce effective circulating volume","Because the heart stops pumping completely","Because the kidneys immediately shut down"],1,
+"In sepsis, pro-inflammatory mediators cause blood vessels to dilate and become leaky, so fluid shifts out of the bloodstream into tissues, producing a relative hypovolemia and dropping blood pressure even though total body fluid hasn't decreased.",
+"Think of it as a wider hose (vasodilation) with a leak (capillary leakage) — the same amount of fluid now generates far less pressure."],
+
+["A nurse is caring for four patients with infection. Which patient should be assessed FIRST?",
+["A UTI patient reporting burning with urination","A cellulitis patient with pain rated 6/10","A pneumonia patient with new confusion and a blood pressure of 86/48","A wound infection patient with a temperature of 100.8°F"],2,
+"New confusion combined with hypotension in a patient with pneumonia are red flags for sepsis and decreased organ perfusion, making this patient the priority over the others, whose findings are less acutely concerning.",
+"New altered mental status plus a falling blood pressure should always move a patient to the top of your assessment list."],
+
+["Which laboratory test result helps identify the specific microorganism causing an infection AND which antibiotic will be effective against it?",
+["Erythrocyte sedimentation rate (ESR)","Culture and sensitivity (C&S)","Complete blood count (CBC) alone","Gram stain alone"],1,
+"A culture identifies the specific microorganism responsible for the infection, while the accompanying sensitivity testing determines which antibiotics will be effective against it.",
+"Whenever possible, obtain ordered cultures before starting antibiotics, since antibiotics already in the system can make the culture less accurate."],
+
+["A Gram stain shows purple-staining bacteria. This bacteria is classified as:",
+["Gram-negative","Gram-positive","Anaerobic only","A prion"],1,
+"Gram-positive bacteria stain purple with a Gram stain, while gram-negative bacteria stain pink or red — this classification helps guide antibiotic selection.",
+"Gram staining is one of the fastest ways to narrow down likely organisms before full culture results are available."],
+
+["The erythrocyte sedimentation rate (ESR) is best described as:",
+["A test that identifies the exact organism causing an infection","A nonspecific marker of inflammation somewhere in the body","A direct measure of antibiotic effectiveness","A screening test for tuberculosis"],1,
+"ESR is a nonspecific indicator of inflammation — it can be elevated by infection or many other inflammatory conditions but does not identify a specific cause.",
+"Because ESR is nonspecific, it must always be interpreted alongside other clinical findings, not used alone to diagnose infection."],
+
+["When reading a PPD (tuberculosis skin test), the nurse should measure:",
+["The total area of redness","The induration (raised, hardened area), not the redness","The temperature of the injection site","The patient's pain level at the site"],1,
+"A PPD test result is measured by the diameter of induration — the firm, raised area — rather than by any surrounding redness, which is not a reliable indicator.",
+"A positive PPD indicates TB exposure or infection, not necessarily active disease — further testing like a chest x-ray is typically needed."],
+
+["Standard precautions should be applied to:",
+["Only patients with a confirmed infectious diagnosis","Every patient, regardless of diagnosis","Only patients in isolation rooms","Only healthcare workers who feel at risk"],1,
+"Standard precautions — including hand hygiene, appropriate PPE, safe injection practices, and respiratory hygiene — apply to every patient, since infectious status is not always known or documented.",
+"Transmission-based precautions are always used in ADDITION to standard precautions, never as a replacement for them."],
+
+["A patient has active Clostridium difficile (C. difficile) infection. Which type of precaution is required?",
+["Droplet precautions with a surgical mask","Airborne precautions with an N95 respirator","Contact precautions with gown and gloves","No special precautions are needed"],2,
+"C. difficile spreads through direct and indirect contact, so contact precautions requiring a gown and gloves are used, along with careful attention to hand hygiene.",
+"Because C. difficile forms spores, alcohol-based hand sanitizer does NOT kill it — always wash hands with soap and water after caring for these patients."],
+
+["Which action by a nurse caring for a patient with C. difficile would require intervention?",
+["Wearing a gown and gloves during care","Washing hands with soap and water after care","Cleaning equipment appropriately","Using alcohol-based hand sanitizer as the primary hand hygiene method after care"],3,
+"Alcohol-based hand sanitizer does not kill C. difficile spores, so relying on it as the primary hand hygiene method after caring for these patients is incorrect and requires correction — soap and water must be used instead.",
+"This is a favorite NCLEX trap: alcohol sanitizer is great for most organisms but not for spore-formers like C. difficile."],
+
+["A patient has suspected pulmonary tuberculosis. Which combination of precautions and PPE is correct?",
+["Contact precautions with gown and gloves","Droplet precautions with a surgical mask","Airborne precautions with an N95 respirator, in a negative-pressure room","Standard precautions only"],2,
+"Tuberculosis spreads via small airborne particles that remain suspended in the air, requiring airborne precautions with an N95 or higher-level respirator and placement in an airborne infection isolation (negative-pressure) room.",
+"A regular surgical mask does not filter small airborne particles the way an N95 respirator does, which is why TB specifically requires respirator-level protection."],
+
+["Which disease is spread primarily through respiratory droplets and requires droplet precautions with a surgical mask, rather than airborne precautions?",
+["Tuberculosis","Measles","Influenza","Chickenpox"],2,
+"Influenza spreads through larger respiratory droplets that travel only short distances, so droplet precautions with a surgical mask are sufficient, unlike measles, chickenpox, and tuberculosis, which require airborne precautions.",
+"Droplet particles fall quickly and travel short distances, while airborne particles are smaller and can remain suspended and travel farther — this size difference explains the different PPE requirements."],
+
+["A healthcare-associated infection (HAI) is best defined as:",
+["Any infection a patient has ever had","An infection a patient develops while receiving care that was not present or incubating when care began","An infection acquired only through surgery","A chronic infection unrelated to hospitalization"],1,
+"An HAI is an infection that develops during the course of receiving healthcare and was not already present or incubating at the start of that care.",
+"Risk factors for HAIs include invasive devices, prolonged hospitalization, malnutrition, and a weakened immune system — all reasons to remove invasive devices as soon as they're no longer needed."],
+
+["Which healthcare-associated infection is specifically linked to indwelling urinary catheters?",
+["CLABSI","VAP","CAUTI","SSI"],2,
+"A CAUTI (catheter-associated urinary tract infection) is directly linked to indwelling urinary (Foley) catheters, and the risk increases the longer the catheter remains in place.",
+"The single best CAUTI prevention strategy is removing the catheter as soon as it is no longer clinically necessary."],
+
+["The best overall strategy to prevent the spread of most healthcare-associated infections is:",
+["Administering prophylactic antibiotics to every patient","Hand hygiene before and after patient care","Isolating every patient regardless of diagnosis","Avoiding the use of any invasive devices ever"],1,
+"Hand hygiene before and after patient care remains one of the single most important and effective ways to prevent the spread of infection in any healthcare setting.",
+"This simple, low-cost intervention prevents more infections than almost any other single measure available to nurses."],
+
+["Which of the following statements about ventilator-associated pneumonia (VAP) prevention is correct?",
+["The head of the bed should be kept flat to prevent aspiration","The head of the bed should be elevated 30–45 degrees unless contraindicated","Oral care should be performed only once a week","Suctioning secretions should be avoided to prevent trauma"],1,
+"VAP prevention includes elevating the head of the bed 30–45 degrees unless contraindicated, along with regular oral care, hand hygiene, and appropriate secretion management.",
+"Because artificial airways bypass the body's normal airway defenses, mechanically ventilated patients need extra vigilance for VAP prevention."],
+
+["Antibiotic resistance, such as with MRSA, means:",
+["The patient's immune system is resistant to all treatment","Certain bacteria are no longer killed or controlled by antibiotics that would normally treat them","The patient can never receive any antibiotic again","The infection is no longer contagious"],1,
+"Antibiotic resistance means specific bacteria are no longer effectively killed or controlled by antibiotics that would typically treat them, making the infection harder — not impossible — to treat.",
+"Resistance makes an infection more difficult to treat; it does NOT mean the patient is resistant to every possible antibiotic."],
+
+["Which class of medication is effective against bacterial infections but has NO effect on viral infections?",
+["Antivirals","Antibiotics","Antifungals","Antihistamines"],1,
+"Antibiotics work by killing bacteria (bactericidal) or inhibiting their growth (bacteriostatic) but have no effect on viruses, which require a completely different mechanism to control.",
+"Teach patients that antibiotics will not help a common cold or the flu, since these are viral illnesses."],
+
+["A patient is taking a prescribed antibiotic and reports feeling much better after only 3 days of a 10-day course. What should the nurse teach?",
+["It is safe to stop the antibiotic once symptoms improve","The full course should be completed as prescribed, even after feeling better","Doubling the next dose will help finish treatment faster","The medication should be shared with a family member with similar symptoms"],1,
+"Patients should be taught to take antibiotics exactly as prescribed and complete the full course, since stopping early — even when feeling better — can allow surviving bacteria to develop resistance.",
+"Stopping an antibiotic early is a leading contributor to the development of antibiotic-resistant organisms."],
+
+["Which is TRUE regarding peak and trough drug levels?",
+["Peak reflects the highest drug concentration; trough is typically drawn just before the next dose","Peak and trough are always drawn at the exact same time","Trough reflects the highest drug concentration","Peak/trough monitoring is required for every antibiotic"],0,
+"Peak levels reflect the highest drug concentration in the blood, while trough levels reflect the lowest concentration and are typically drawn just before the next scheduled dose — not every medication requires this monitoring.",
+"Correct timing of these blood draws is essential — an improperly timed level can lead to incorrect dosing decisions."],
+
+["Which is TRUE regarding antibiotic-associated diarrhea and Clostridium difficile infection?",
+["All diarrhea after antibiotic use is caused by C. difficile","Antibiotics can disrupt normal intestinal bacteria, and in some cases this allows C. difficile to overgrow and cause diarrhea","C. difficile is spread only through airborne transmission","C. difficile infection never requires specific precautions"],1,
+"Antibiotics can disrupt the normal balance of intestinal bacteria, sometimes allowing C. difficile to overgrow and produce toxins that cause diarrhea and colitis — but not every case of antibiotic-associated diarrhea is due to C. difficile.",
+"Monitor stool frequency, hydration, and electrolytes in any patient with diarrhea after antibiotic use, and use contact precautions if C. difficile is suspected or confirmed."],
+
+["Active immunity differs from passive immunity in that active immunity:",
+["Provides only temporary protection","Is produced by the person's own immune system and typically provides long-lasting protection","Is always received through injected antibodies","Never involves memory cells"],1,
+"Active immunity develops when a person's own immune system produces antibodies and memory cells after exposure to an antigen, such as through vaccination or recovering from infection, typically providing long-lasting protection.",
+"Simple way to remember: active = your body MAKES the antibodies; passive = your body RECEIVES ready-made antibodies from another source."],
+
+["An infant receives temporary protection from antibodies passed through the placenta from the mother. This is an example of which type of immunity?",
+["Active natural immunity","Passive natural immunity","Active artificial immunity","Passive artificial immunity"],1,
+"Antibodies passed from mother to infant through the placenta or breast milk are a form of passive immunity, since the infant receives ready-made antibodies rather than producing its own, and this protection is temporary.",
+"Passive immunity via immune globulin injections, like rabies immune globulin, works the same way — it's immediate but not long-lasting."],
+
+["Which organ is considered a PRIMARY lymphoid organ, where B lymphocytes mature?",
+["Spleen","Lymph nodes","Bone marrow","Tonsils"],2,
+"Bone marrow is a primary lymphoid organ where B lymphocytes mature, while the thymus is the primary lymphoid organ where T lymphocytes mature.",
+"Simple memory aid: B cells → Bone marrow, T cells → Thymus."],
+
+["Which organ filters blood, removing old or damaged red blood cells and platelets while helping fight blood-borne pathogens?",
+["Lymph nodes","Spleen","Thymus","Tonsils"],1,
+"The spleen filters blood, removing old or damaged red blood cells and platelets, and helps the body fight blood-borne pathogens, while lymph nodes filter lymph rather than blood.",
+"Keep this distinction clear: lymph nodes filter lymph, while the spleen filters blood."],
+
+["On a complete blood count with differential, which white blood cell type is most closely associated with fighting bacterial infections?",
+["Lymphocytes","Neutrophils","Eosinophils","Basophils"],1,
+"Neutrophils are the white blood cell type most closely associated with fighting bacterial infections, while lymphocytes are more associated with viral infections.",
+"Quick associations: neutrophils = bacteria, lymphocytes = viruses, eosinophils = allergies/parasites, monocytes = clean-up crew, basophils = histamine/allergic response."],
+
+["Which white blood cell type is most associated with allergic reactions and parasitic infections?",
+["Neutrophils","Monocytes","Eosinophils","Lymphocytes"],2,
+"Eosinophils increase in response to allergic reactions and parasitic infections, distinguishing them from neutrophils (bacterial) and lymphocytes (viral).",
+"An elevated eosinophil count on a CBC with differential should prompt the nurse to consider both allergy and parasitic infection as possible causes."],
+
+["An antigen is best described as:",
+["A protein made by B cells that binds to a foreign substance","A foreign substance that the immune system recognizes as a threat","A type of white blood cell","A medication that boosts immunity"],1,
+"An antigen is a foreign substance — such as part of a bacterium, virus, toxin, or allergen — that the immune system recognizes and responds to, while an antibody is the protein the body produces to bind and neutralize that antigen.",
+"Think of the antigen as the “lock” and the antibody as the specific “key” built to fit it."],
+
+["A patient develops hives, allergic rhinitis, and mild wheezing after eating shellfish. This reaction is mediated primarily by which antibody?",
+["IgG","IgA","IgE","IgM"],2,
+"Type I hypersensitivity reactions, including allergic responses like hives and allergic rhinitis, are mediated by IgE antibodies that trigger mast cells and basophils to release histamine.",
+"The most severe form of a Type I reaction is anaphylaxis, a medical emergency requiring immediate treatment."],
+
+["A patient develops wheezing, generalized hives, tongue swelling, and a blood pressure of 80/44 after receiving an antibiotic. Which prescribed medication should the nurse administer FIRST?",
+["Diphenhydramine","Methylprednisolone","IM epinephrine","Albuterol"],2,
+"IM epinephrine is the first-line, priority treatment for anaphylaxis and should never be delayed in favor of antihistamines or corticosteroids, which are only adjunct therapies.",
+"Give IM epinephrine into the mid-outer thigh without delay, then focus on airway, breathing, circulation, and IV fluids for hypotension."],
+
+["Which finding, if present ALONE, does NOT necessarily indicate anaphylaxis?",
+["Tongue and throat swelling","Difficulty breathing with wheezing","Hives without any respiratory or cardiovascular symptoms","Hypotension with tachycardia"],2,
+"Hives (urticaria) alone do not equal anaphylaxis; anaphylaxis requires more systemic involvement such as airway compromise, wheezing, or hypotension in addition to skin findings.",
+"Always assess a patient with hives for signs of tongue or throat swelling, breathing difficulty, or hypotension before ruling out a more severe reaction."],
+
+["In Type III hypersensitivity reactions, tissue damage occurs because:",
+["Antibodies attack the patient's own red blood cells directly","Antigen-antibody immune complexes deposit in tissues and trigger inflammation","Mast cells release histamine immediately upon exposure","T cells destroy transplanted organ tissue"],1,
+"In Type III hypersensitivity, antigen-antibody complexes form, circulate in the blood, and deposit in certain tissues, where the immune system activates complement and inflammatory cells that damage the surrounding tissue.",
+"Type III reactions develop over time as immune complexes accumulate, unlike the immediate onset typical of Type I anaphylactic reactions."],
+
+["A patient is 10 minutes into a packed red blood cell transfusion and suddenly reports severe back pain, chills, and the nurse notes dark red urine. What should the nurse do FIRST?",
+["Slow the infusion rate and continue monitoring","Administer an antihistamine and reassess in 15 minutes","Stop the transfusion immediately and keep the IV open with new tubing and 0.9% normal saline","Document the findings and notify the provider at the end of the shift"],2,
+"Back pain, chills, fever, and dark or red urine during a transfusion suggest a hemolytic transfusion reaction; the nurse's first priority is to stop the transfusion immediately, keep the IV line open with new tubing and normal saline, and notify the provider and blood bank.",
+"The first 15 minutes of any transfusion are the highest-risk period for a reaction — remain with the patient and monitor vital signs closely during this window."],
+
+["Which of the following best distinguishes delirium from dementia in an older adult?",
+["Delirium develops gradually over years; dementia develops suddenly","Delirium is acute and fluctuating, often from infection or medication; dementia is gradual and progressive","Both delirium and dementia are permanent and irreversible","Dementia always resolves once the underlying cause is treated"],1,
+"Delirium has an acute, fluctuating onset and is often caused by an underlying issue such as infection or medication effects, while dementia develops gradually and progressively over time.",
+"A sudden change in an older adult's mental status should always prompt investigation for a reversible cause like infection, rather than being assumed to be worsening dementia."],
+
+["According to the immunization schedule, at what age is the Hepatitis B vaccine first given to a healthy infant?",
+["2 months","6 months","At birth","12 months"],2,
+"The Hepatitis B vaccine series begins at birth for healthy infants, with additional doses following at 2, 4 (or 6), and 12 months depending on the specific schedule used.",
+"Starting the HepB series at birth helps protect the infant from a bloodborne virus that can be transmitted from an infected mother during delivery."],
+
+["Which vaccine series must be started before the infant reaches 15 weeks of age?",
+["DTaP","Rotavirus","Hepatitis B","Pneumococcal (PCV)"],1,
+"The rotavirus vaccine series has a strict age cutoff and must be started before 15 weeks of age due to a small increased risk of a bowel complication (intussusception) if started later.",
+"Rotavirus vaccine is also a live oral vaccine, distinguishing it from the injectable, inactivated vaccines given at the same well-child visits."],
+
+["Which of the following vaccines is a LIVE vaccine and therefore generally contraindicated during pregnancy or significant immunosuppression?",
+["Inactivated influenza (IIV)","MMR (measles, mumps, rubella)","Tdap","Hepatitis B"],1,
+"MMR is a live vaccine and is contraindicated during pregnancy and in patients with significant immunosuppression, along with other live vaccines like varicella and rotavirus.",
+"Tdap, by contrast, is not a live vaccine and is actually recommended during every pregnancy, typically between 27 and 36 weeks gestation."],
+
+["A Tdap (tetanus, diphtheria, pertussis) booster is generally recommended how often in adulthood?",
+["Every 2 years","Every 5 years","Every 10 years","Only once in a lifetime"],2,
+"After the initial Tdap dose, adults generally need a Td or Tdap booster every 10 years to maintain protection against tetanus, diphtheria, and pertussis.",
+"Tdap is also given during every pregnancy regardless of when the last booster was received, to help protect the newborn against pertussis."],
+
+["At what age is the recombinant zoster (shingles) vaccine, Shingrix, generally recommended for all adults, given in a 2-dose series?",
+["Age 18 and older","Age 50 and older","Age 65 and older only","Age 75 and older only"],1,
+"Shingrix is recommended as a 2-dose series for all adults age 50 and older, and also for immunocompromised adults 19 and older, and is preferred over the older live zoster vaccine.",
+"Because Shingrix is not a live vaccine, it is a safer option than the older shingles vaccine for immunocompromised patients."],
+
+["The RSV vaccine is recommended as a single dose for which group of adults?",
+["All adults starting at age 18","Adults 75 and older, and adults 50–74 at increased risk for severe RSV disease","Only healthcare workers","Only pregnant patients"],1,
+"The RSV vaccine is recommended as a single dose for adults 75 and older, as well as for adults 50–74 who are at increased risk for severe RSV disease.",
+"RSV vaccination is a relatively newer addition to the adult immunization schedule — always verify against the current CDC schedule since recommendations continue to evolve."],
+
+["HPV vaccination is routinely recommended to begin at what age?",
+["18 to 20 years","11 to 12 years (may start at 9)","30 to 35 years","At birth"],1,
+"The HPV vaccine series is routinely recommended starting at 11 to 12 years of age (it may begin as early as age 9), with catch-up vaccination available through age 26 and shared decision-making up to age 45.",
+"Starting the HPV series before age 15 typically only requires 2 doses, while starting at 15 or older requires a 3-dose series — an important detail for exam questions."],
+
+["According to information on Group A Streptococcus (S. pyogenes) infection, which complication can result from an UNTREATED strep throat infection?",
+["Hepatitis","Rheumatic fever and post-streptococcal glomerulonephritis","Tuberculosis","Botulism"],1,
+"Untreated Group A Streptococcus infections, such as strep throat, can lead to serious complications including rheumatic fever and post-streptococcal glomerulonephritis (kidney inflammation).",
+"This is exactly why completing the full course of prescribed antibiotics for strep throat, even after symptoms improve, is so important."],
+
+["Group B Streptococcus (GBS) is of particular concern in which patient population?",
+["Adolescents with acne","Newborns whose mothers were not treated with antibiotics before a vaginal delivery","Older adults with osteoarthritis","Patients with seasonal allergies"],1,
+"Group B Streptococcus can cause severe infection in newborns if the mother was not treated with antibiotics prior to a vaginal delivery, making prenatal GBS screening and intrapartum antibiotic prophylaxis important.",
+"In adults, GBS can also live in the GI tract and, less commonly, lead to sepsis or pneumonia."],
+
+["Which class of medication is prescribed to gradually expose a patient to increasing amounts of an allergen to build long-term tolerance for significant allergies?",
+["Antihistamines","Immunotherapy (allergy shots)","Decongestants","Corticosteroids"],1,
+"Immunotherapy, sometimes called allergy shots, works by gradually exposing the patient to increasing amounts of an allergen over time to build tolerance, making it a long-term approach rather than a quick-relief medication.",
+"Immunotherapy can be given as subcutaneous injections (SCIT) or as sublingual tablets/drops (SLIT), depending on the allergen and patient."],
+
+["IgG antibodies are notable because they:",
+["Only provide protection for a few hours","Provide long-term immunity after vaccination or illness and can cross the placenta to protect a newborn","Cannot be produced after vaccination","Are only found in breast milk"],1,
+"IgG antibodies provide long-term immunity following vaccination or recovery from illness, and they are also able to cross the placenta, giving a newborn passive immunity before birth.",
+"This placental transfer of IgG is one reason maternal vaccination during pregnancy, such as Tdap, can help protect the newborn after birth."],
+
+["Corticosteroids used to suppress the body's inflammatory response should generally be used cautiously because prolonged use can cause:",
+["Enhanced immune function","Important adverse effects and immune suppression","Immediate cure of all infections","No significant risks with long-term use"],1,
+"While corticosteroids are effective at suppressing inflammation, prolonged use can cause significant adverse effects and can suppress the immune system, increasing infection risk.",
+"Corticosteroids are often used as an adjunct treatment, not a first-line rescue medication — in anaphylaxis, for example, epinephrine is given first, not a corticosteroid."],
+
+["Which term describes pus-forming bacteria released from an abscess, potentially spreading to other body sites?",
+["Pyemia","Cellulitis","Serous drainage","Necrosis"],0,
+"Pyemia refers to pus-forming bacteria being released from an abscess, which can then spread and form new abscesses elsewhere in the body.",
+"Pyemia is closely related to septicemia — both describe serious bloodstream complications originating from a localized infection."],
+
+["Which statement correctly distinguishes medical from surgical asepsis?",
+["Medical asepsis eliminates all microorganisms; surgical asepsis only reduces their number","Medical (clean) technique reduces the number of microorganisms; surgical (sterile) technique eliminates all microorganisms from a specific area","There is no meaningful difference between the two","Surgical asepsis is only used outside the operating room"],1,
+"Medical asepsis, or clean technique, reduces the number and spread of microorganisms, while surgical asepsis, or sterile technique, aims to eliminate all microorganisms, including spores, from a specific field or area.",
+"Use surgical asepsis for procedures like inserting a urinary catheter or accessing a central line, where introducing any organism could cause a serious infection."]
+];
+
+const DEV = [
+["According to Erikson's stages, an infant (birth to 1 year) is working through which psychosocial task?",
+["Autonomy vs. shame and doubt","Trust vs. mistrust","Initiative vs. guilt","Industry vs. inferiority"],1,
+"Erikson identifies trust vs. mistrust as the psychosocial task of infancy; consistency in meeting the infant's needs builds trust, and success produces the virtue of hope.",
+"Remember: infants cannot be “spoiled” by being soothed when they cry — consistent comfort actually builds the foundation of trust."],
+
+["At what age does the anterior fontanel typically close?",
+["2 to 3 months","6 to 9 months","12 to 18 months","3 years"],2,
+"The anterior fontanel typically closes between 12 and 18 months, while the posterior fontanel closes much earlier, around 2 to 3 months.",
+"Always compare a fontanel finding to the expected timeline — a very early or very delayed closure can be a clue to an underlying condition."],
+
+["By what age does an infant's birth weight typically triple?",
+["6 months","1 year","2 years","18 months"],1,
+"An infant's birth weight typically doubles by about 6 months and triples by 1 year of age, reflecting the rapid growth of infancy.",
+"Weight and head circumference are measured at every well-child visit specifically to track this expected growth trajectory."],
+
+["According to Piaget, object permanence — understanding that an object still exists even when out of sight — typically develops around what age?",
+["2 to 3 months","8 to 9 months","2 years","4 years"],1,
+"Object permanence, a key milestone of Piaget's sensorimotor stage, typically develops around 8 to 9 months of age.",
+"This milestone helps explain why peek-a-boo becomes such an engaging game for infants around this age — the object “disappearing” and “reappearing” is genuinely surprising to them."],
+
+["Separation anxiety and stranger anxiety are considered NORMAL findings in which age range?",
+["Newborn period only","Approximately 6 to 36 months","School age (6-12 years)","Adolescence"],1,
+"Separation anxiety is a normal developmental finding from about 6 to 36 months, with stranger anxiety often appearing around 8 months.",
+"Recognizing this as a normal developmental stage, rather than a behavioral problem, helps guide appropriate parent reassurance and support."],
+
+["For infant safety, an infant should be placed to sleep in which position, on what type of surface?",
+["Prone (on the stomach), on a soft mattress with a pillow","Supine (on the back), on a firm mattress with no pillows, bumpers, or loose bedding","Side-lying, with a rolled blanket for support","Prone, in a co-sleeping arrangement with a parent"],1,
+"To reduce the risk of sudden infant death syndrome and suffocation, infants should sleep supine on a firm mattress, with no pillows, bumpers, loose bedding, or co-sleeping.",
+"This “back to sleep, tummy to play” principle is one of the most important safe-sleep teaching points for new parents."],
+
+["A rear-facing car seat is recommended for an infant until which milestone is reached?",
+["6 months of age, regardless of weight","At least 1 year of age and 22 lb, per this course's guidance","3 months of age","Until the infant can sit up independently"],1,
+"Rear-facing car seats are recommended until the infant reaches at least 1 year of age and 22 lb, based on the guidance in the life span material, and many current recommendations extend this even further.",
+"Car seat guidelines continue to evolve, so nurses should stay current with the latest recommendations from organizations like the American Academy of Pediatrics."],
+
+["Solid foods should generally be introduced to an infant's diet starting at approximately what age?",
+["2 months","6 months","10 months","18 months"],1,
+"Solid foods are generally introduced around 6 months of age, starting with iron-fortified cereal and introducing new foods one at a time every 4 to 7 days.",
+"This timing also coincides with the depletion of the infant's fetal iron stores, making iron-fortified foods especially important at this age."],
+
+["According to Erikson, a toddler (1 to 3 years) is working through which psychosocial task?",
+["Trust vs. mistrust","Autonomy vs. shame and doubt","Initiative vs. guilt","Identity vs. role confusion"],1,
+"Toddlers work through autonomy vs. shame and doubt, wanting to do things independently, which can produce normal negativism, ritualism, and temper tantrums.",
+"A toddler saying “no” to almost everything and insisting on “me do it” reflects healthy development of autonomy, not defiance to be punished."],
+
+["Which type of play is typical of toddlers, in which children play alongside but not directly with one another?",
+["Cooperative play","Associative play","Parallel play","Solitary play only"],2,
+"Toddlers typically engage in parallel play, playing alongside other children without direct interaction or cooperation.",
+"Don't mistake parallel play for antisocial behavior — it's a normal, expected stage on the way to more cooperative play later in childhood."],
+
+["By approximately what age is bowel and bladder control usually complete in toddlers?",
+["12 to 18 months","2.5 to 3 years","5 years","7 years"],1,
+"Bowel and bladder control is usually complete by about 2.5 to 3 years of age, though this varies among individual children.",
+"Physiologic anorexia — a normal decrease in appetite as growth slows — is also common during the toddler years and should not be mistaken for a feeding problem."],
+
+["According to Erikson, a preschooler (3 to 6 years) is working through which psychosocial task?",
+["Autonomy vs. shame and doubt","Initiative vs. guilt","Industry vs. inferiority","Generativity vs. stagnation"],1,
+"Preschoolers work through initiative vs. guilt, becoming more purposeful and independent as cooperative play develops.",
+"Preschoolers often fear body mutilation, so applying a bandage after an injection or minor procedure can be genuinely reassuring, not just a formality."],
+
+["Magical thinking, egocentrism, and viewing illness or hospitalization as a form of punishment are characteristic of which Piaget stage?",
+["Sensorimotor","Preoperational","Concrete operational","Formal operational"],1,
+"The preoperational stage (approximately 2 to 7 years) includes magical thinking, egocentrism, and the tendency for children to view illness or hospitalization as a punishment for their own behavior.",
+"Because of this, reassure preschool-age children clearly and repeatedly that a hospitalization or procedure is not their fault and is not a punishment."],
+
+["According to Erikson, a school-age child (about 5 to 13 years) is developing which psychosocial task?",
+["Initiative vs. guilt","Industry vs. inferiority","Identity vs. role confusion","Intimacy vs. isolation"],1,
+"School-age children work through industry vs. inferiority, developing physical, social, and learning skills; success in this stage brings self-confidence and competence.",
+"This stage also marks the child's first close peer relationships outside the family, often formed through shared activities."],
+
+["Which cognitive stage, according to Piaget, is characterized by concrete problem-solving and an understanding of cause-and-effect regarding illness?",
+["Preoperational","Concrete operational","Formal operational","Sensorimotor"],1,
+"The concrete operational stage (about 7 to 11 years) allows children to use concrete problem-solving, inductive reasoning, and to understand rules, consequences, and the cause and effect of illness.",
+"This is the developmental point where simple, honest explanations of procedures become genuinely meaningful to the child, rather than just distracting them."],
+
+["Which vaccines are typically recommended for a child at 11 to 12 years of age?",
+["Hepatitis B and rotavirus","Tdap, HPV series, and MenACWY","MMR and varicella only","Only annual influenza"],1,
+"Tdap, the HPV series, and MenACWY are recommended around 11 to 12 years of age, with a MenACWY booster given later at age 16.",
+"This visit is also a good opportunity for blood pressure screening and school or sports physicals, since both begin around this age range."],
+
+["According to Erikson, an adolescent (about 13 to 21 years) is working through which psychosocial task?",
+["Industry vs. inferiority","Identity vs. role confusion","Intimacy vs. isolation","Generativity vs. stagnation"],1,
+"Adolescents work through identity vs. role confusion, with major tasks including forming an identity, achieving separation, and initiating intimacy.",
+"A close personal relationship with one same-sex peer is described as vitally important during this stage for helping the adolescent define their own identity."],
+
+["Which Piaget stage is characterized by abstract reasoning, hypothetical thinking, and the ability to consider future consequences?",
+["Concrete operational","Formal operational","Preoperational","Sensorimotor"],1,
+"Formal operational thinking, beginning around age 11, allows for analytical problem-solving, abstract reasoning, and the ability to think hypothetically about future consequences.",
+"The “personal fable” and “imaginary audience” phenomena that emerge in this stage help explain why adolescents may feel uniquely invincible or intensely self-conscious."],
+
+["The PACE screening tool used to assess adolescent substance abuse risk stands for:",
+["Physical, Academic, Career, Emotional","Parents/Peers/Pot, Alcohol/Automobiles, Cigarettes, Education","Play, Activity, Communication, Exercise","Prevention, Assessment, Communication, Evaluation"],1,
+"PACE stands for Parents/Peers/Pot, Alcohol/Automobiles, Cigarettes, and Education, and two or more concerning areas on this screening indicate risk requiring referral.",
+"Use open-ended, non-judgmental questions when screening adolescents for substance use, mood concerns, or risk-taking behaviors."],
+
+["The female athlete triad, which the nurse should assess for in adolescent female athletes, includes eating disorder, osteoporosis, and:",
+["Hypertension","Amenorrhea","Type 2 diabetes","Hyperthyroidism"],1,
+"The female athlete triad consists of disordered eating, amenorrhea (absence of menstruation), and osteoporosis, and assessment should include questions about last menstrual period, recent fractures, and dietary intake.",
+"This triad reflects how intense athletic training combined with inadequate nutrition can affect the reproductive and skeletal systems simultaneously."],
+
+["What is the leading cause of death among adolescents, according to the life span material?",
+["Cancer","Motor vehicle and off-road accidents","Infectious disease","Congenital heart defects"],1,
+"Road and off-road motor vehicle accidents kill and injure adolescents at an alarming rate, making prevention — seat belt use, no distracted driving, avoiding impaired driving — a top health priority for this age group.",
+"Adolescents' developing formal operational thinking includes a sense of personal invincibility, which can contribute to risk-taking behind the wheel."],
+
+["According to Erikson, a young adult (about 20 to 35 years) is developing which psychosocial task?",
+["Identity vs. role confusion","Intimacy vs. isolation","Generativity vs. stagnation","Ego integrity vs. despair"],1,
+"Young adults work through intimacy vs. isolation, centered on the ability to form close, loving relationships with others; failure in this stage can lead to isolation and loneliness.",
+"This stage often overlaps with major life events like partner selection, marriage, and starting a family or career."],
+
+["At approximately what age does peak bone mass typically occur?",
+["Late teens","Late 20s to early 30s","Mid-40s","After age 60"],1,
+"Bone mass generally peaks in the late 20s to early 30s, which is one reason adequate calcium and vitamin D intake during young adulthood matters for long-term bone health.",
+"Building strong peak bone mass early in life helps reduce the impact of the gradual bone density decline that occurs later, especially after menopause."],
+
+["According to Erikson, a middle-age adult (about 35 to 65 years) is working through which psychosocial task?",
+["Intimacy vs. isolation","Generativity vs. stagnation","Ego integrity vs. despair","Industry vs. inferiority"],1,
+"Middle-age adults work through generativity vs. stagnation, focused on achieving life goals and creating positive change for others; failure to contribute can result in stagnation and self-absorption.",
+"The “sandwich generation” phenomenon — caring for children while also caring for aging parents — is a hallmark stressor of this developmental stage."],
+
+["Presbyopia, the difficulty focusing on near objects that typically begins in the 40s, is a normal finding of which life stage?",
+["Adolescence","Young adulthood","Middle adulthood","Older adulthood only"],2,
+"Presbyopia is a normal age-related vision change that typically begins in the 40s, during middle adulthood, as part of the gradual decline in body systems that starts in this stage.",
+"Reassure middle-age patients that needing reading glasses is a normal, expected physiologic change, not a sign of a serious eye disease."],
+
+["At what age does colorectal cancer screening typically begin, according to current guidelines referenced in the life span material?",
+["Age 35","Age 40","Age 45","Age 65"],2,
+"Colorectal cancer screening is recommended to begin at age 45, along with continued monitoring of lipid panels, A1C, and blood pressure during middle adulthood.",
+"This is an example of a screening age that has shifted over time in national guidelines — always verify against the current recommendation when teaching patients."],
+
+["According to Erikson, an older adult (65 years and older) is working through which final psychosocial task?",
+["Generativity vs. stagnation","Ego integrity vs. despair","Identity vs. role confusion","Trust vs. mistrust"],1,
+"Older adults work through ego integrity vs. despair, finding meaning in the life they've lived; without this sense of integrity, they may become angry, depressed, or feel inadequate — a state Erikson calls despair.",
+"Listening for what an older patient is and isn't saying, and helping them find meaning and dignity in their life story, supports healthy resolution of this final stage."],
+
+["According to Continuity Theory of aging, which statement is TRUE?",
+["A person's basic personality and behavior patterns change dramatically with age","People change physiologically as they age, but their basic personality and behavior patterns remain consistent","Older adults universally withdraw from society","Aging causes complete role reversal in every family"],1,
+"Continuity Theory holds that while people undergo physiological changes as they age, their basic personality traits and behavioral patterns generally stay consistent over time.",
+"This theory reinforces that an older adult's lifelong personality and coping style — not just their current physical condition — should guide how the nurse communicates and provides care."],
+
+["Normal aging is associated with slower processing speed and slower recall. How should the nurse interpret this finding?",
+["As an early sign of dementia requiring immediate referral","As a normal aging change, not automatically confusion or dementia","As a sign of an acute infection","As evidence the patient needs guardianship"],1,
+"Slower processing and recall speed is a normal part of aging and should not automatically be mistaken for confusion or dementia; long-term memory is generally preserved longer than short-term memory in normal aging.",
+"When teaching older adults, allow extra time, use large print, reduce distractions, and reinforce information in writing to accommodate these normal changes."],
+
+["Polypharmacy is a significant safety concern in older adults primarily because:",
+["Older adults cannot read medication labels","Decreased liver and kidney function slows drug excretion, increasing the risk of drug buildup and toxicity","Older adults take too few medications","Medications are more expensive for this age group"],1,
+"Decreased liver and kidney function in older adults slows drug metabolism and excretion, so medications can build up and reach toxic levels more easily, especially when many medications are combined (polypharmacy).",
+"The safety principle for older adults is to use the smallest number of drugs at the lowest possible effective dose, along with regular medication review."],
+
+["Which of the following is the most effective single intervention to reduce fall risk in older adults during a home safety assessment?",
+["Adding more furniture for support","Removing throw rugs and clutter, and ensuring adequate lighting","Discouraging any physical activity","Removing grab bars from the bathroom"],1,
+"Removing throw rugs and clutter and ensuring adequate lighting are basic, effective home safety modifications that directly reduce fall risk, while grab bars should be added, not removed.",
+"Fall risk should be assessed at every visit for older adults, since physical, cognitive, and sensory changes all contribute to increased risk."],
+
+["Which age-related change increases an older adult's risk for aspiration?",
+["Increased saliva production","Decreased swallowing and gag reflex function","Improved dentition","Increased gastric motility"],1,
+"Decreased swallowing function and a diminished gag reflex increase the risk of aspiration in older adults, along with impaired temperature regulation affecting other areas of safety.",
+"This is another reason careful dysphagia screening and appropriate diet texture modification are especially important in the geriatric population."],
+
+["Which statement about advance directives is most accurate for nursing practice with older adults?",
+["Advance directives are only relevant once a patient is actively dying","Advance directives, power of attorney, and code status should be addressed as part of routine health promotion for older adults","Only physicians can discuss advance directives with patients","Advance directives cannot be changed once completed"],1,
+"Advance directives, power of attorney, and code status are important components of health promotion and care planning for older adults, ideally addressed before a crisis occurs, not only at the end of life.",
+"Promoting independence and honoring the patient's own wishes, as reflected in their advance directives, is a key factor in older adult wellbeing."],
+
+["In infants, when does the parachute reflex typically develop?",
+["Birth to 1 month","3 months","7 to 9 months","18 months"],2,
+"The parachute reflex, a protective reflex where the infant extends the arms when tipped forward, typically develops around 7 to 9 months of age.",
+"The grasp reflex, by contrast, is usually gone by 3 months, and pincer grasp develops closer to 1 year — track each reflex's own expected timeline."],
+
+["At what age are toddlers generally expected to have all 20 deciduous (primary) teeth?",
+["12 months","18 months","About 30 months (2.5 years)","5 years"],2,
+"Toddlers typically have all 20 deciduous teeth erupted by approximately 30 months (2.5 years) of age.",
+"The first dental visit is recommended by age 1, well before all the primary teeth have even erupted, to establish preventive dental care early."],
+
+["Which developmental finding is considered a RED FLAG for possible autism spectrum disorder in a toddler?",
+["Uses 300 or more words by age 3","No single words by 16 months of age","Walks independently by 15 months","Stacks blocks by 18 months"],1,
+"Autism red flags include no pointing or gesturing by 12 months, no single words by 16 months, no spontaneous two-word phrases by 24 months, and any loss of previously achieved language or social skills.",
+"Developmental and autism screening is specifically recommended at both 18 and 24 months to catch these red flags early."],
+
+["By what age should a preschooler have developed hand preference (right- or left-handedness)?",
+["By 1 year","By 3 years","By 6 years","Hand preference never becomes fixed"],1,
+"Hand preference typically develops by around 3 years of age, alongside improving fine and gross motor control during the preschool years.",
+"Fine motor skills at this age include using a tripod grasp on writing utensils and beginning to cut on a line with safety scissors."],
+
+["Which of the following best reflects appropriate play during hospitalization for a preschool-age child?",
+["Highly competitive games with clear winners and losers","Noncompetitive, therapeutic, or medical play with dolls before procedures","No play at all, to conserve the child's energy","Only screen-based entertainment"],1,
+"Play during childhood illness or hospitalization should be noncompetitive and can include therapeutic techniques like medical play with dolls or teddy bears to help prepare a child for procedures.",
+"Involving Child Life specialists for procedure preparation is an evidence-based way to reduce a hospitalized child's fear and improve cooperation."],
+
+["Girls generally reach physical maturity earlier than boys, marking the beginning of preadolescence, by approximately what age?",
+["Age 6","Age 10","Age 15","Age 20"],1,
+"Girls are generally more physically mature than boys by about age 10, marking the beginning of preadolescence, even though brain size has already reached approximately adult dimensions by school age.",
+"Remember that a child's physical size and emotional maturity are not necessarily correlated — a taller, more physically developed child should not automatically be held to adult emotional expectations."],
+
+["At what age does menarche most commonly occur, according to the life span material, making it important to always ask during pediatric assessment?",
+["6 to 8 years","9 to 12 years","15 to 17 years","18 to 20 years"],1,
+"Menarche is occurring earlier in recent years, often between 9 and 12 years of age, so the nurse should always ask whether menstruation has started during a pediatric assessment of a school-age or adolescent patient.",
+"This earlier trend in menarche timing is a good example of why nurses should ask developmentally appropriate questions even in patients who seem “too young” at first glance."],
+
+["Which nutritional consideration is emphasized specifically for adolescent athletes who exhaust muscle glycogen stores?",
+["High-fat, low-carbohydrate meals","A slowly absorbed glucose source to prevent chronically low muscle energy stores","Complete avoidance of protein","Unlimited caffeine intake for energy"],1,
+"Athletic adolescents who deplete muscle glycogen benefit from a slowly absorbed glucose source to prevent chronic low energy stores, while caffeine and alcohol should be avoided because they deplete body water.",
+"Anabolic steroids should also be avoided in this age group because they are detrimental to bone growth, in addition to their other health risks."],
+
+["Which statement about vegetarian diets in adolescence is accurate?",
+["Vegetarian diets have no effect on nutrient absorption","High intake of grains, bran, and foods rich in oxalic acid can impair iron absorption","Vegetarian diets automatically provide excess iron","Vegetarian diets are contraindicated during the adolescent growth spurt"],1,
+"A high intake of grains, bran, and oxalic acid-rich foods common in some vegetarian diets can impair iron absorption, which is a particular concern during the increased iron needs of adolescent growth, especially for menstruating girls.",
+"This is a good reminder that even a generally healthy dietary pattern can create specific nutrient challenges that need individualized attention."],
+
+["Which foods are noted to increase choline and acetylcholine in the brain, which may support memory?",
+["Fish, soy, peanuts, and rice","Butter and fried foods","Refined sugar and soda","Iceberg lettuce only"],0,
+"Fish, soy, peanuts, and rice can increase choline and acetylcholine levels in the brain, which the life span material links to increased memory support in adolescents.",
+"Protein-rich meals more broadly increase amino acids like tyrosine, which break down into norepinephrine and can increase alertness."],
+
+["Which statement accurately reflects the nutritional needs of young and middle-age adults, compared to earlier life stages?",
+["Caloric needs increase significantly every decade after age 20","Energy needs generally decline with age, but intake often does not decrease proportionally, contributing to weight gain","Protein needs disappear completely after age 30","Calcium needs decrease throughout adulthood"],1,
+"Energy needs decline gradually with age due to slowing metabolism, but if dietary intake does not decrease to match, unwanted weight gain can result — a common concern from young adulthood through middle age.",
+"Encouraging regular exercise, weight management, and mindful portion sizes becomes increasingly important as metabolism naturally slows with age."],
+
+["Which best describes the nutrition priority for a healthy older adult, whose caloric needs decrease but whose nutrient needs largely do NOT?",
+["Serve very large portions to ensure adequate intake","Provide nutrient-dense foods in appropriately smaller portions to match lower caloric needs","Eliminate protein to reduce kidney workload in all older adults","Ignore calcium and vitamin D needs since bone growth has stopped"],1,
+"Because caloric needs decrease with age while the need for protein, calcium, vitamin D, and other nutrients remains the same or even increases, nutrient-dense foods in smaller, appropriately-sized portions best meet older adult needs.",
+"Adequate protein is especially important in this population to help prevent sarcopenia (age-related muscle loss)."],
+
+["Which immunization is specifically recommended in a formulation preferred for adults 65 and older, due to a generally weaker immune response to the standard dose?",
+["Standard-dose influenza vaccine","High-dose or adjuvanted influenza vaccine","Standard MMR vaccine","Rotavirus vaccine"],1,
+"High-dose or adjuvanted influenza vaccine formulations are preferred for adults 65 and older because this population may not respond as robustly to the standard-dose vaccine.",
+"This preference reflects a broader pattern in geriatric immunization: some vaccines are specifically adjusted in dose or formulation to account for age-related immune changes."],
+
+["The subculture theory of aging proposes that:",
+["Older adults completely lose their individual identity as they age","Older people form their own subculture with unique norms while remaining strongly individualized","All older adults think and behave identically","Aging eliminates personal preferences entirely"],1,
+"Subculture theory suggests that older adults develop their own subculture with distinct norms and standards, while still remaining strongly individualized as people.",
+"This theory, along with continuity theory, reminds nurses to avoid stereotyping older adults as a single homogenous group."],
+
+["Which finding would be MOST consistent with elder abuse or neglect, requiring the nurse to assess the patient privately?",
+["A well-groomed older adult who reports feeling supported by family","Unexplained bruising, poor hygiene, and a caregiver who insists on answering all questions for the patient","A patient who independently manages their own finances","A patient with a stable, long-term home care arrangement"],1,
+"Unexplained injuries, poor hygiene, and a caregiver who won't allow the patient to speak privately are warning signs of possible elder abuse or neglect, warranting a private assessment away from the caregiver.",
+"Always find a way to interview an older adult alone, even briefly, if abuse or neglect is suspected, since the caregiver present may be the source of harm."],
+
+["Which is the BEST description of the relationship between cognitive development and the other developmental domains shown in the life span concept map?",
+["Cognitive development is entirely separate from physical and psychosocial development","Cognitive development is connected to and influences physical development, health promotion, psychosocial development, and age-appropriate activities","Only physical development affects cognitive development","Age-appropriate activities have no relationship to cognitive development"],1,
+"The life span concept map shows cognitive development as a central, connected concept that feeds into physical development and health promotion, and also connects to psychosocial development and age-appropriate activities, reflecting how these domains influence one another.",
+"Thinking of development as an interconnected map, rather than isolated categories, helps you predict how a change in one domain (like illness affecting cognition) might ripple into others."],
+
+["A nurse is teaching a group of new parents about injury prevention across the pediatric age groups. Which pairing of age group and PRIMARY injury prevention focus is correct?",
+["Infant: teach stranger-danger road safety","Toddler: rear-facing car seat until age 8","Preschooler: indirect supervision needed due to poor judgment despite improving physical skills","School age: constant direct supervision at all times, identical to a toddler"],2,
+"Preschoolers require indirect supervision because their improving physical skills often outpace their judgment, putting them at risk for injuries related to burns, poisoning, and traffic; toddlers need forward-facing seats (not rear-facing until age 8), and school-age children generally need less constant direct supervision than a toddler as they gain more mature judgment.",
+"Injury prevention teaching should always be matched to a child's specific developmental stage — what protects a toddler may be inappropriate or insufficient for a preschooler or school-age child."]
+];
+
+/* ============ BUILD FULL QUESTION LIST ============ */
+const ALL = [];
+function pushCat(arr, cat){ arr.forEach(q => ALL.push({cat, q:q[0], opts:q[1], correct:q[2], rationale:q[3], tip:q[4]})); }
+pushCat(PHARM, "PHARM");
+pushCat(NUTR, "NUTR");
+pushCat(IMMUNE, "IMMUNE");
+pushCat(DEV, "DEV");
+ALL.forEach((item,i)=> item.num = i+1);
+
+const CAT_LABEL = {PHARM:"Pharmacology", NUTR:"Nutrition", IMMUNE:"Immunity & Infection", DEV:"Life Span Development"};
+const LETTERS = ["A","B","C","D"];
+
+/* ============ THEME ============ */
+document.getElementById('themeBtn').addEventListener('click', function(){
+  var cur = document.documentElement.getAttribute('data-theme');
+  if(cur === 'dark'){ document.documentElement.setAttribute('data-theme','light'); }
+  else if(cur === 'light'){ document.documentElement.removeAttribute('data-theme'); }
+  else { document.documentElement.setAttribute('data-theme','dark'); }
+});
+
+/* ============ STAT STRIP ============ */
+(function renderStats(){
+  var strip = document.getElementById('statStrip');
+  var counts = {PHARM:PHARM.length, NUTR:NUTR.length, IMMUNE:IMMUNE.length, DEV:DEV.length};
+  var html = '<div class="stat-chip"><b>'+ALL.length+'</b>Total Qs</div>';
+  Object.keys(counts).forEach(function(c){
+    html += '<div class="stat-chip"><b>'+counts[c]+'</b>'+CAT_LABEL[c]+'</div>';
+  });
+  strip.innerHTML = html;
+})();
+
+/* ============ FILTERS ============ */
+var activeFilter = "ALL";
+var filterRow = document.getElementById('filterRow');
+var filterDefs = [["ALL","All Topics"],["PHARM","Pharmacology"],["NUTR","Nutrition"],["IMMUNE","Immunity & Infection"],["DEV","Life Span"]];
+filterDefs.forEach(function(f){
+  var b = document.createElement('button');
+  b.className = 'filt' + (f[0]==="ALL" ? ' on' : '');
+  b.textContent = f[1];
+  b.dataset.c = f[0];
+  b.addEventListener('click', function(){
+    activeFilter = f[0];
+    document.querySelectorAll('.filt').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    render();
+  });
+  filterRow.appendChild(b);
+});
+
+/* ============ SEARCH ============ */
+var searchTerm = "";
+document.getElementById('search').addEventListener('input', function(e){
+  searchTerm = e.target.value.trim().toLowerCase();
+  render();
+});
+
+/* ============ EXPAND/COLLAPSE ALL ============ */
+document.getElementById('expandAll').addEventListener('click', function(){
+  document.querySelectorAll('.qcard').forEach(c => c.classList.add('open'));
+});
+document.getElementById('collapseAll').addEventListener('click', function(){
+  document.querySelectorAll('.qcard').forEach(c => c.classList.remove('open'));
+});
+
+/* ============ TIMED NCLEX BLOCK MODE ============ */
+var quizState = {
+  questions: [],
+  currentIndex: 0,
+  selected: {},
+  timeLeft: 900,
+  timerId: null,
+  finished: false
+};
+
+function shuffleArray(arr){
+  var copy = arr.slice();
+  for (var i = copy.length - 1; i > 0; i--){
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = copy[i];
+    copy[i] = copy[j];
+    copy[j] = temp;
+  }
+  return copy;
+}
+
+function getQuizCategoryValue(){
+  var raw = document.getElementById('quizCategory').value;
+  if (raw === 'ALL') return ['PHARM','NUTR','IMMUNE','DEV'];
+  return [raw];
+}
+
+function startQuiz(){
+  var categoryList = getQuizCategoryValue();
+  var pool = ALL.filter(function(item){ return categoryList.indexOf(item.cat) !== -1; });
+  if (!pool.length){
+    alert('No questions available for the selected category.');
+    return;
+  }
+
+  var size = parseInt(document.getElementById('quizBlockSize').value, 10);
+  var randomized = document.getElementById('quizRandom').value === 'true';
+  var block = randomized ? shuffleArray(pool) : pool.slice();
+  quizState.questions = block.slice(0, Math.min(size, block.length));
+  quizState.currentIndex = 0;
+  quizState.selected = {};
+  quizState.finished = false;
+  quizState.timeLeft = parseInt(document.getElementById('quizTimeLimit').value, 10);
+
+  if (quizState.timerId) clearInterval(quizState.timerId);
+  updateTimerDisplay();
+  renderQuiz();
+  quizState.timerId = setInterval(function(){
+    if (quizState.finished) return;
+    quizState.timeLeft -= 1;
+    updateTimerDisplay();
+    if (quizState.timeLeft <= 0){
+      clearInterval(quizState.timerId);
+      quizState.finished = true;
+      showQuizSummary('Time is up!');
+    }
+  }, 1000);
+}
+
+function updateTimerDisplay(){
+  var timerEl = document.getElementById('quizTimer');
+  var minutes = Math.floor(quizState.timeLeft / 60);
+  var seconds = quizState.timeLeft % 60;
+  timerEl.textContent = String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0');
+}
+
+function recordAnswer(idx){
+  if (!quizState.questions.length || quizState.finished) return;
+  var current = quizState.questions[quizState.currentIndex];
+  quizState.selected[quizState.currentIndex] = idx;
+  renderQuiz();
+}
+
+function finishQuiz(message){
+  var quizCard = document.getElementById('quizCard');
+  var questionEl = document.getElementById('quizQuestion');
+  var optionsEl = document.getElementById('quizOptions');
+  var feedbackEl = document.getElementById('quizFeedback');
+  var nextBtn = document.getElementById('nextQuizBtn');
+  var prevBtn = document.getElementById('prevQuizBtn');
+
+  quizState.finished = true;
+  clearInterval(quizState.timerId);
+  questionEl.textContent = 'Block Complete';
+  optionsEl.innerHTML = '';
+  feedbackEl.classList.add('show');
+
+  var score = 0;
+  quizState.questions.forEach(function(q, i){
+    if (quizState.selected[i] === q.correct) score += 1;
+  });
+
+  var percent = Math.round((score / quizState.questions.length) * 100);
+  feedbackEl.innerHTML = '<strong>' + message + '</strong><br>Score: ' + score + '/' + quizState.questions.length + ' (' + percent + '%)';
+  document.getElementById('quizStatus').textContent = 'Block complete';
+  nextBtn.textContent = 'Start again';
+  prevBtn.disabled = true;
+  nextBtn.onclick = function(){
+    document.getElementById('quizCard').classList.remove('active');
+    document.getElementById('quizQuestion').textContent = '';
+    document.getElementById('quizOptions').innerHTML = '';
+    document.getElementById('quizFeedback').classList.remove('show');
+    document.getElementById('quizFeedback').innerHTML = '';
+    document.getElementById('nextQuizBtn').onclick = function(){
+      if (quizState.currentIndex < quizState.questions.length - 1) {
+        quizState.currentIndex += 1;
+        renderQuiz();
+      } else {
+        finishQuiz('Nice work.');
+      }
+    };
+    document.getElementById('prevQuizBtn').onclick = function(){
+      if (quizState.currentIndex > 0) {
+        quizState.currentIndex -= 1;
+        renderQuiz();
+      }
+    };
+  };
+}
+
+function showQuizSummary(message){
+  finishQuiz(message);
+}
+
+function renderQuiz(){
+  var quizCard = document.getElementById('quizCard');
+  var questionEl = document.getElementById('quizQuestion');
+  var optionsEl = document.getElementById('quizOptions');
+  var feedbackEl = document.getElementById('quizFeedback');
+  var prevBtn = document.getElementById('prevQuizBtn');
+  var nextBtn = document.getElementById('nextQuizBtn');
+
+  if (!quizState.questions.length){
+    quizCard.classList.remove('active');
+    return;
+  }
+
+  quizCard.classList.add('active');
+  var q = quizState.questions[quizState.currentIndex];
+  var selectedIndex = quizState.selected[quizState.currentIndex];
+
+  document.getElementById('quizStatus').textContent = 'Question ' + (quizState.currentIndex + 1) + ' of ' + quizState.questions.length;
+  questionEl.textContent = q.q;
+  optionsEl.innerHTML = '';
+  feedbackEl.classList.remove('show');
+  feedbackEl.innerHTML = '';
+
+  q.opts.forEach(function(opt, idx){
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'quiz-option';
+    if (selectedIndex === idx) btn.classList.add('selected');
+    if (selectedIndex !== undefined && idx === q.correct) btn.classList.add('correct');
+    if (selectedIndex !== undefined && idx === selectedIndex && idx !== q.correct) btn.classList.add('wrong');
+
+    btn.innerHTML = '<span class="quiz-choice">' + LETTERS[idx] + '</span><span>' + opt + '</span>';
+    btn.disabled = selectedIndex !== undefined;
+    btn.addEventListener('click', function(){
+      recordAnswer(idx);
+    });
+    optionsEl.appendChild(btn);
+  });
+
+  if (selectedIndex !== undefined){
+    var correctText = q.opts[q.correct];
+    feedbackEl.classList.add('show');
+    feedbackEl.innerHTML = '<strong>Correct answer:</strong> ' + LETTERS[q.correct] + ') ' + correctText + '<br><strong>Why:</strong> ' + q.rationale + '<br><strong>NCLEX Tip:</strong> ' + q.tip;
+  }
+
+  prevBtn.disabled = quizState.currentIndex === 0 || quizState.finished;
+  nextBtn.textContent = quizState.currentIndex === quizState.questions.length - 1 ? 'Finish block' : 'Next';
+  nextBtn.onclick = function(){
+    if (quizState.finished) return;
+    if (quizState.currentIndex < quizState.questions.length - 1) {
+      quizState.currentIndex += 1;
+      renderQuiz();
+    } else {
+      var score = 0;
+      quizState.questions.forEach(function(item, idx){
+        if (quizState.selected[idx] === item.correct) score += 1;
+      });
+      var pct = Math.round((score / quizState.questions.length) * 100);
+      finishQuiz('Final result: ' + score + '/' + quizState.questions.length + ' (' + pct + '%)');
+    }
+  };
+
+  prevBtn.onclick = function(){
+    if (quizState.currentIndex > 0) {
+      quizState.currentIndex -= 1;
+      renderQuiz();
+    }
+  };
+}
+
+document.getElementById('startQuizBtn').addEventListener('click', startQuiz);
+document.getElementById('resetQuizBtn').addEventListener('click', function(){
+  if (quizState.timerId) clearInterval(quizState.timerId);
+  quizState.finished = true;
+  document.getElementById('quizCard').classList.remove('active');
+  document.getElementById('quizFeedback').classList.remove('show');
+  document.getElementById('quizFeedback').innerHTML = '';
+  document.getElementById('quizStatus').textContent = 'Question 0 of 0';
+  document.getElementById('quizQuestion').textContent = '';
+  document.getElementById('quizOptions').innerHTML = '';
+  updateTimerDisplay();
+});
+
+/* ============ RENDER LIST ============ */
+var listEl = document.getElementById('list');
+var emptyEl = document.getElementById('emptyMsg');
+
+function render(){
+  var filtered = ALL.filter(function(item){
+    var matchCat = (activeFilter === "ALL") || (item.cat === activeFilter);
+    if(!matchCat) return false;
+    if(searchTerm === "") return true;
+    var hay = (item.q + " " + item.opts.join(" ") + " " + item.rationale + " " + item.tip).toLowerCase();
+    return hay.indexOf(searchTerm) !== -1;
+  });
+
+  listEl.innerHTML = "";
+  emptyEl.style.display = filtered.length === 0 ? "block" : "none";
+
+  filtered.forEach(function(item){
+    var card = document.createElement('div');
+    card.className = 'qcard';
+
+    var optsHtml = "";
+    item.opts.forEach(function(opt, idx){
+      optsHtml += '<div class="opt' + (idx===item.correct ? ' correct' : '') + '"><span class="let">' + LETTERS[idx] + '.</span><span>' + opt + '</span></div>';
+    });
+
+    card.innerHTML =
+      '<div class="qhead">' +
+        '<div class="qnum ' + item.cat + '">' + item.num + '</div>' +
+        '<div class="qmeta">' +
+          '<span class="qtag ' + item.cat + '">' + CAT_LABEL[item.cat] + '</span>' +
+          '<div class="qtext">' + item.q + '</div>' +
+        '</div>' +
+        '<div class="chev">▾</div>' +
+      '</div>' +
+      '<div class="qbody">' +
+        '<div class="opts">' + optsHtml + '</div>' +
+        '<div class="answer-block">' +
+          '<div class="rationale"><b>Why:</b> ' + item.rationale + '</div>' +
+          '<div class="tipbox"><span class="ic">💡</span><div><b>NCLEX Tip —</b> ' + item.tip + '</div></div>' +
+        '</div>' +
+      '</div>';
+
+    card.querySelector('.qhead').addEventListener('click', function(){
+      card.classList.toggle('open');
+    });
+
+    listEl.appendChild(card);
+  });
+}
+
+quizState.timeLeft = parseInt(document.getElementById('quizTimeLimit').value, 10);
+updateTimerDisplay();
+render();
+</script>
+</body>
+</html>
